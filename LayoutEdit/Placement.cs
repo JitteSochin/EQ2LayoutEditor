@@ -212,11 +212,11 @@ namespace LayoutEdit
             medy = miny + ((maxy - miny) / 2);
             medz = minz + ((maxz - minz) / 2);
             int ItemCtr = Items.Length;
+            double radRotation = RotationDegree / 180 * Math.PI;
             for (int curritem = 0; curritem < ItemCtr; curritem++)
             {
                 double opposite = 0, adjacent = 0;
                 double itemdegree = 0, itemradius = 0;
-                double radRotation = RotationDegree / 180 * Math.PI;
                 switch (axis)
                 {
                     case RotateAxis.x:
@@ -237,7 +237,7 @@ namespace LayoutEdit
                         itemradius = Math.Sqrt(Math.Pow(adjacent, 2.0) + Math.Pow(opposite, 2.0));
                         Items[curritem].y = (decimal)((double)medy + itemradius * Math.Cos(itemdegree + radRotation));
                         Items[curritem].z = (decimal)((double)medz + itemradius * Math.Sin(itemdegree + radRotation));
-                        Items[curritem].Pitch += (decimal)RotationDegree;
+                        Items[curritem].Pitch -= (decimal)RotationDegree;
                         break;
                     case RotateAxis.y:
                         adjacent = (double)(Items[curritem].x - medx);
