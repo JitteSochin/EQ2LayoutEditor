@@ -66,8 +66,6 @@
             this.btnCircle = new System.Windows.Forms.Button();
             this.txtRadius = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.chkEastWest = new System.Windows.Forms.CheckBox();
-            this.chkVertical = new System.Windows.Forms.CheckBox();
             this.chkReverse = new System.Windows.Forms.CheckBox();
             this.lbl_Fill = new System.Windows.Forms.Label();
             this.lbl_off = new System.Windows.Forms.Label();
@@ -132,18 +130,28 @@
             this.btnGroupItemAdd = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.cboGroups = new System.Windows.Forms.ComboBox();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.rdo_Roll = new System.Windows.Forms.RadioButton();
+            this.rdo_Pitch = new System.Windows.Forms.RadioButton();
+            this.rdo_Rotate = new System.Windows.Forms.RadioButton();
+            this.label13 = new System.Windows.Forms.Label();
+            this.btnGroupRotate = new System.Windows.Forms.Button();
+            this.txtRotation = new System.Windows.Forms.TextBox();
             this.mnuShopping = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.mnuShopCSV = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuShopHTML = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuShopBoth = new System.Windows.Forms.ToolStripMenuItem();
-            this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.txtRotation = new System.Windows.Forms.TextBox();
-            this.btnGroupRotate = new System.Windows.Forms.Button();
-            this.label13 = new System.Windows.Forms.Label();
-            this.rdo_Rotate = new System.Windows.Forms.RadioButton();
-            this.rdo_Pitch = new System.Windows.Forms.RadioButton();
-            this.rdo_Roll = new System.Windows.Forms.RadioButton();
-            this.label19 = new System.Windows.Forms.Label();
+            this.cboCirclePlane = new System.Windows.Forms.ComboBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rdoCenter = new System.Windows.Forms.RadioButton();
+            this.rdoPoint = new System.Windows.Forms.RadioButton();
+            this.txt_rg_X = new System.Windows.Forms.TextBox();
+            this.txt_rg_Y = new System.Windows.Forms.TextBox();
+            this.txt_rg_Z = new System.Windows.Forms.TextBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.mnu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dg)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -152,8 +160,10 @@
             this.tabPage4.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage5.SuspendLayout();
-            this.mnuShopping.SuspendLayout();
             this.tabPage6.SuspendLayout();
+            this.mnuShopping.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // mnu
@@ -345,6 +355,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.cboCirclePlane);
             this.tabPage1.Controls.Add(this.chkPointTops);
             this.tabPage1.Controls.Add(this.label7);
             this.tabPage1.Controls.Add(this.txtRevolutions);
@@ -358,8 +369,6 @@
             this.tabPage1.Controls.Add(this.btnCircle);
             this.tabPage1.Controls.Add(this.txtRadius);
             this.tabPage1.Controls.Add(this.label5);
-            this.tabPage1.Controls.Add(this.chkEastWest);
-            this.tabPage1.Controls.Add(this.chkVertical);
             this.tabPage1.Controls.Add(this.chkReverse);
             this.tabPage1.Controls.Add(this.lbl_Fill);
             this.tabPage1.Controls.Add(this.lbl_off);
@@ -380,7 +389,7 @@
             // chkPointTops
             // 
             this.chkPointTops.AutoSize = true;
-            this.chkPointTops.Location = new System.Drawing.Point(77, 162);
+            this.chkPointTops.Location = new System.Drawing.Point(87, 179);
             this.chkPointTops.Name = "chkPointTops";
             this.chkPointTops.Size = new System.Drawing.Size(123, 17);
             this.chkPointTops.TabIndex = 25;
@@ -390,7 +399,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(60, 236);
+            this.label7.Location = new System.Drawing.Point(60, 241);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(63, 13);
             this.label7.TabIndex = 24;
@@ -398,7 +407,7 @@
             // 
             // txtRevolutions
             // 
-            this.txtRevolutions.Location = new System.Drawing.Point(132, 233);
+            this.txtRevolutions.Location = new System.Drawing.Point(132, 238);
             this.txtRevolutions.Name = "txtRevolutions";
             this.txtRevolutions.Size = new System.Drawing.Size(55, 20);
             this.txtRevolutions.TabIndex = 23;
@@ -426,7 +435,7 @@
             // rdo_From_Ground
             // 
             this.rdo_From_Ground.AutoSize = true;
-            this.rdo_From_Ground.Location = new System.Drawing.Point(69, 215);
+            this.rdo_From_Ground.Location = new System.Drawing.Point(69, 220);
             this.rdo_From_Ground.Name = "rdo_From_Ground";
             this.rdo_From_Ground.Size = new System.Drawing.Size(104, 17);
             this.rdo_From_Ground.TabIndex = 19;
@@ -437,7 +446,7 @@
             // 
             this.rdo_From_Center.AutoSize = true;
             this.rdo_From_Center.Checked = true;
-            this.rdo_From_Center.Location = new System.Drawing.Point(69, 200);
+            this.rdo_From_Center.Location = new System.Drawing.Point(69, 205);
             this.rdo_From_Center.Name = "rdo_From_Center";
             this.rdo_From_Center.Size = new System.Drawing.Size(82, 17);
             this.rdo_From_Center.TabIndex = 18;
@@ -448,7 +457,7 @@
             // chkSpiral
             // 
             this.chkSpiral.AutoSize = true;
-            this.chkSpiral.Location = new System.Drawing.Point(10, 200);
+            this.chkSpiral.Location = new System.Drawing.Point(10, 205);
             this.chkSpiral.Name = "chkSpiral";
             this.chkSpiral.Size = new System.Drawing.Size(52, 17);
             this.chkSpiral.TabIndex = 17;
@@ -493,7 +502,7 @@
             this.txtRadius.Name = "txtRadius";
             this.txtRadius.Size = new System.Drawing.Size(55, 20);
             this.txtRadius.TabIndex = 12;
-            this.txtRadius.Text = "20";
+            this.txtRadius.Text = "5";
             this.txtRadius.Leave += new System.EventHandler(this.NumberText_Leave);
             // 
             // label5
@@ -505,32 +514,12 @@
             this.label5.TabIndex = 11;
             this.label5.Text = "Radius";
             // 
-            // chkEastWest
-            // 
-            this.chkEastWest.AutoSize = true;
-            this.chkEastWest.Location = new System.Drawing.Point(31, 177);
-            this.chkEastWest.Name = "chkEastWest";
-            this.chkEastWest.Size = new System.Drawing.Size(107, 17);
-            this.chkEastWest.TabIndex = 10;
-            this.chkEastWest.Text = "East / West Wall";
-            this.chkEastWest.UseVisualStyleBackColor = true;
-            // 
-            // chkVertical
-            // 
-            this.chkVertical.AutoSize = true;
-            this.chkVertical.Location = new System.Drawing.Point(9, 162);
-            this.chkVertical.Name = "chkVertical";
-            this.chkVertical.Size = new System.Drawing.Size(61, 17);
-            this.chkVertical.TabIndex = 9;
-            this.chkVertical.Text = "Vertical";
-            this.chkVertical.UseVisualStyleBackColor = true;
-            // 
             // chkReverse
             // 
             this.chkReverse.AutoSize = true;
             this.chkReverse.Checked = true;
             this.chkReverse.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkReverse.Location = new System.Drawing.Point(9, 139);
+            this.chkReverse.Location = new System.Drawing.Point(9, 135);
             this.chkReverse.Name = "chkReverse";
             this.chkReverse.Size = new System.Drawing.Size(114, 17);
             this.chkReverse.TabIndex = 8;
@@ -540,7 +529,7 @@
             // lbl_Fill
             // 
             this.lbl_Fill.AutoSize = true;
-            this.lbl_Fill.Location = new System.Drawing.Point(73, 258);
+            this.lbl_Fill.Location = new System.Drawing.Point(73, 263);
             this.lbl_Fill.Name = "lbl_Fill";
             this.lbl_Fill.Size = new System.Drawing.Size(60, 13);
             this.lbl_Fill.TabIndex = 7;
@@ -549,7 +538,7 @@
             // lbl_off
             // 
             this.lbl_off.AutoSize = true;
-            this.lbl_off.Location = new System.Drawing.Point(7, 245);
+            this.lbl_off.Location = new System.Drawing.Point(7, 250);
             this.lbl_off.Name = "lbl_off";
             this.lbl_off.Size = new System.Drawing.Size(66, 26);
             this.lbl_off.TabIndex = 6;
@@ -1188,6 +1177,81 @@
             this.cboGroups.TabIndex = 0;
             this.cboGroups.SelectedIndexChanged += new System.EventHandler(this.cboGroups_SelectedIndexChanged);
             // 
+            // tabPage6
+            // 
+            this.tabPage6.Controls.Add(this.groupBox2);
+            this.tabPage6.Controls.Add(this.groupBox1);
+            this.tabPage6.Controls.Add(this.label13);
+            this.tabPage6.Controls.Add(this.btnGroupRotate);
+            this.tabPage6.Controls.Add(this.txtRotation);
+            this.tabPage6.Location = new System.Drawing.Point(4, 40);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage6.Size = new System.Drawing.Size(220, 339);
+            this.tabPage6.TabIndex = 5;
+            this.tabPage6.Text = "Rotate Items";
+            this.tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // rdo_Roll
+            // 
+            this.rdo_Roll.AutoSize = true;
+            this.rdo_Roll.Location = new System.Drawing.Point(6, 51);
+            this.rdo_Roll.Name = "rdo_Roll";
+            this.rdo_Roll.Size = new System.Drawing.Size(81, 17);
+            this.rdo_Roll.TabIndex = 5;
+            this.rdo_Roll.Text = "Y Axis (Roll)";
+            this.rdo_Roll.UseVisualStyleBackColor = true;
+            // 
+            // rdo_Pitch
+            // 
+            this.rdo_Pitch.AutoSize = true;
+            this.rdo_Pitch.Location = new System.Drawing.Point(6, 35);
+            this.rdo_Pitch.Name = "rdo_Pitch";
+            this.rdo_Pitch.Size = new System.Drawing.Size(87, 17);
+            this.rdo_Pitch.TabIndex = 4;
+            this.rdo_Pitch.Text = "X Axis (Pitch)";
+            this.rdo_Pitch.UseVisualStyleBackColor = true;
+            // 
+            // rdo_Rotate
+            // 
+            this.rdo_Rotate.AutoSize = true;
+            this.rdo_Rotate.Checked = true;
+            this.rdo_Rotate.Location = new System.Drawing.Point(6, 19);
+            this.rdo_Rotate.Name = "rdo_Rotate";
+            this.rdo_Rotate.Size = new System.Drawing.Size(95, 17);
+            this.rdo_Rotate.TabIndex = 3;
+            this.rdo_Rotate.TabStop = true;
+            this.rdo_Rotate.Text = "Z Axis (Rotate)";
+            this.rdo_Rotate.UseVisualStyleBackColor = true;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(56, 7);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(47, 13);
+            this.label13.TabIndex = 2;
+            this.label13.Text = "Degrees";
+            // 
+            // btnGroupRotate
+            // 
+            this.btnGroupRotate.Location = new System.Drawing.Point(6, 32);
+            this.btnGroupRotate.Name = "btnGroupRotate";
+            this.btnGroupRotate.Size = new System.Drawing.Size(97, 23);
+            this.btnGroupRotate.TabIndex = 1;
+            this.btnGroupRotate.Text = "Rotate Group";
+            this.btnGroupRotate.UseVisualStyleBackColor = true;
+            this.btnGroupRotate.Click += new System.EventHandler(this.btnGroupRotate_Click);
+            // 
+            // txtRotation
+            // 
+            this.txtRotation.Location = new System.Drawing.Point(6, 6);
+            this.txtRotation.Name = "txtRotation";
+            this.txtRotation.Size = new System.Drawing.Size(43, 20);
+            this.txtRotation.TabIndex = 0;
+            this.txtRotation.Text = "0";
+            this.txtRotation.Leave += new System.EventHandler(this.NumberText_Leave);
+            // 
             // mnuShopping
             // 
             this.mnuShopping.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -1218,93 +1282,123 @@
             this.mnuShopBoth.Text = "Generate CSV and HTML";
             this.mnuShopBoth.Click += new System.EventHandler(this.mnuShopping_ItemClick);
             // 
-            // tabPage6
+            // cboCirclePlane
             // 
-            this.tabPage6.Controls.Add(this.label19);
-            this.tabPage6.Controls.Add(this.rdo_Roll);
-            this.tabPage6.Controls.Add(this.rdo_Pitch);
-            this.tabPage6.Controls.Add(this.rdo_Rotate);
-            this.tabPage6.Controls.Add(this.label13);
-            this.tabPage6.Controls.Add(this.btnGroupRotate);
-            this.tabPage6.Controls.Add(this.txtRotation);
-            this.tabPage6.Location = new System.Drawing.Point(4, 40);
-            this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(220, 339);
-            this.tabPage6.TabIndex = 5;
-            this.tabPage6.Text = "Rotate Items";
-            this.tabPage6.UseVisualStyleBackColor = true;
+            this.cboCirclePlane.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboCirclePlane.FormattingEnabled = true;
+            this.cboCirclePlane.Items.AddRange(new object[] {
+            "Z (Draw on Ground)",
+            "X (Draw on E/W Wall)",
+            "Y (Draw on N/S Wall)"});
+            this.cboCirclePlane.Location = new System.Drawing.Point(6, 156);
+            this.cboCirclePlane.Name = "cboCirclePlane";
+            this.cboCirclePlane.Size = new System.Drawing.Size(204, 21);
+            this.cboCirclePlane.TabIndex = 26;
             // 
-            // txtRotation
+            // groupBox1
             // 
-            this.txtRotation.Location = new System.Drawing.Point(6, 6);
-            this.txtRotation.Name = "txtRotation";
-            this.txtRotation.Size = new System.Drawing.Size(43, 20);
-            this.txtRotation.TabIndex = 0;
-            this.txtRotation.Text = "0";
-            this.txtRotation.Leave += new System.EventHandler(this.NumberText_Leave);
+            this.groupBox1.Controls.Add(this.rdo_Rotate);
+            this.groupBox1.Controls.Add(this.rdo_Pitch);
+            this.groupBox1.Controls.Add(this.rdo_Roll);
+            this.groupBox1.Location = new System.Drawing.Point(10, 61);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(154, 78);
+            this.groupBox1.TabIndex = 7;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Rotate On...";
             // 
-            // btnGroupRotate
+            // rdoCenter
             // 
-            this.btnGroupRotate.Location = new System.Drawing.Point(6, 32);
-            this.btnGroupRotate.Name = "btnGroupRotate";
-            this.btnGroupRotate.Size = new System.Drawing.Size(97, 23);
-            this.btnGroupRotate.TabIndex = 1;
-            this.btnGroupRotate.Text = "Rotate Group";
-            this.btnGroupRotate.UseVisualStyleBackColor = true;
-            this.btnGroupRotate.Click += new System.EventHandler(this.btnGroupRotate_Click);
+            this.rdoCenter.AutoSize = true;
+            this.rdoCenter.Checked = true;
+            this.rdoCenter.Location = new System.Drawing.Point(6, 19);
+            this.rdoCenter.Name = "rdoCenter";
+            this.rdoCenter.Size = new System.Drawing.Size(140, 17);
+            this.rdoCenter.TabIndex = 0;
+            this.rdoCenter.TabStop = true;
+            this.rdoCenter.Text = "Determined Center Point";
+            this.rdoCenter.UseVisualStyleBackColor = true;
             // 
-            // label13
+            // rdoPoint
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(56, 7);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(47, 13);
-            this.label13.TabIndex = 2;
-            this.label13.Text = "Degrees";
+            this.rdoPoint.AutoSize = true;
+            this.rdoPoint.Location = new System.Drawing.Point(6, 35);
+            this.rdoPoint.Name = "rdoPoint";
+            this.rdoPoint.Size = new System.Drawing.Size(66, 17);
+            this.rdoPoint.TabIndex = 1;
+            this.rdoPoint.Text = "Location";
+            this.rdoPoint.UseVisualStyleBackColor = true;
             // 
-            // rdo_Rotate
+            // txt_rg_X
             // 
-            this.rdo_Rotate.AutoSize = true;
-            this.rdo_Rotate.Checked = true;
-            this.rdo_Rotate.Location = new System.Drawing.Point(59, 61);
-            this.rdo_Rotate.Name = "rdo_Rotate";
-            this.rdo_Rotate.Size = new System.Drawing.Size(112, 17);
-            this.rdo_Rotate.TabIndex = 3;
-            this.rdo_Rotate.TabStop = true;
-            this.rdo_Rotate.Text = "On Z Axis (Rotate)";
-            this.rdo_Rotate.UseVisualStyleBackColor = true;
+            this.txt_rg_X.Location = new System.Drawing.Point(6, 74);
+            this.txt_rg_X.Name = "txt_rg_X";
+            this.txt_rg_X.Size = new System.Drawing.Size(44, 20);
+            this.txt_rg_X.TabIndex = 2;
+            this.txt_rg_X.Text = "0";
+            this.txt_rg_X.Leave += new System.EventHandler(this.NumberText_Leave);
             // 
-            // rdo_Pitch
+            // txt_rg_Y
             // 
-            this.rdo_Pitch.AutoSize = true;
-            this.rdo_Pitch.Location = new System.Drawing.Point(59, 85);
-            this.rdo_Pitch.Name = "rdo_Pitch";
-            this.rdo_Pitch.Size = new System.Drawing.Size(104, 17);
-            this.rdo_Pitch.TabIndex = 4;
-            this.rdo_Pitch.Text = "On X Axis (Pitch)";
-            this.rdo_Pitch.UseVisualStyleBackColor = true;
+            this.txt_rg_Y.Location = new System.Drawing.Point(56, 74);
+            this.txt_rg_Y.Name = "txt_rg_Y";
+            this.txt_rg_Y.Size = new System.Drawing.Size(44, 20);
+            this.txt_rg_Y.TabIndex = 3;
+            this.txt_rg_Y.Text = "0";
+            this.txt_rg_Y.Leave += new System.EventHandler(this.NumberText_Leave);
             // 
-            // rdo_Roll
+            // txt_rg_Z
             // 
-            this.rdo_Roll.AutoSize = true;
-            this.rdo_Roll.Location = new System.Drawing.Point(59, 109);
-            this.rdo_Roll.Name = "rdo_Roll";
-            this.rdo_Roll.Size = new System.Drawing.Size(98, 17);
-            this.rdo_Roll.TabIndex = 5;
-            this.rdo_Roll.Text = "On Y Axis (Roll)";
-            this.rdo_Roll.UseVisualStyleBackColor = true;
+            this.txt_rg_Z.Location = new System.Drawing.Point(106, 74);
+            this.txt_rg_Z.Name = "txt_rg_Z";
+            this.txt_rg_Z.Size = new System.Drawing.Size(44, 20);
+            this.txt_rg_Z.TabIndex = 4;
+            this.txt_rg_Z.Text = "0";
+            this.txt_rg_Z.Leave += new System.EventHandler(this.NumberText_Leave);
             // 
-            // label19
+            // label22
             // 
-            this.label19.AutoSize = true;
-            this.label19.ForeColor = System.Drawing.Color.Red;
-            this.label19.Location = new System.Drawing.Point(6, 297);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(204, 39);
-            this.label19.TabIndex = 6;
-            this.label19.Text = "Still working on this. The Z Rotation is \r\nclean, but the X/Y rotation can be gli" +
-    "tchy \r\nif the items are rotated on z.";
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(22, 58);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(14, 13);
+            this.label22.TabIndex = 11;
+            this.label22.Text = "X";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(73, 58);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(14, 13);
+            this.label21.TabIndex = 12;
+            this.label21.Text = "Y";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(121, 58);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(14, 13);
+            this.label20.TabIndex = 13;
+            this.label20.Text = "Z";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.label20);
+            this.groupBox2.Controls.Add(this.label21);
+            this.groupBox2.Controls.Add(this.label22);
+            this.groupBox2.Controls.Add(this.txt_rg_Z);
+            this.groupBox2.Controls.Add(this.txt_rg_Y);
+            this.groupBox2.Controls.Add(this.txt_rg_X);
+            this.groupBox2.Controls.Add(this.rdoPoint);
+            this.groupBox2.Controls.Add(this.rdoCenter);
+            this.groupBox2.Location = new System.Drawing.Point(10, 146);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(200, 100);
+            this.groupBox2.TabIndex = 8;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Rotate Around...";
             // 
             // Form1
             // 
@@ -1336,9 +1430,13 @@
             this.tabPage3.ResumeLayout(false);
             this.tabPage5.ResumeLayout(false);
             this.tabPage5.PerformLayout();
-            this.mnuShopping.ResumeLayout(false);
             this.tabPage6.ResumeLayout(false);
             this.tabPage6.PerformLayout();
+            this.mnuShopping.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1370,8 +1468,6 @@
         private System.Windows.Forms.Label lbl_Fill;
         private System.Windows.Forms.TextBox txtRadius;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.CheckBox chkEastWest;
-        private System.Windows.Forms.CheckBox chkVertical;
         private System.Windows.Forms.CheckBox chkReverse;
         private System.Windows.Forms.Button btnCircle;
         private System.Windows.Forms.CheckBox chkRotate;
@@ -1459,7 +1555,17 @@
         private System.Windows.Forms.RadioButton rdo_Pitch;
         private System.Windows.Forms.RadioButton rdo_Rotate;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.ComboBox cboCirclePlane;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.TextBox txt_rg_Z;
+        private System.Windows.Forms.TextBox txt_rg_Y;
+        private System.Windows.Forms.TextBox txt_rg_X;
+        private System.Windows.Forms.RadioButton rdoPoint;
+        private System.Windows.Forms.RadioButton rdoCenter;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
 

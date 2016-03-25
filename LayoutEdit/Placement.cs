@@ -185,32 +185,47 @@ namespace LayoutEdit
             }
             return Items;
         }
-        internal static HouseItem[] RotateGroup(HouseItem[] Items, double RotationDegree, RotateAxis axis)
+        internal static HouseItem[] RotateGroup(HouseItem[] Items, double RotationDegree, RotateAxis axis, Vector3D RotatePoint, bool RotateAroundPoint)
         {
-            decimal minx, miny, minz
-                , maxx, maxy, maxz
-                , medx, medy, medz;
-            minx = Items[0].x;
-            maxx = minx;
-            medx = minx;
-            miny = Items[0].y;
-            maxy = miny;
-            medy = miny;
-            minz = Items[0].z;
-            maxz = minz;
-            medz = minz;
-            foreach (HouseItem item in Items)
+            decimal minx = 0
+                , miny = 0
+                , minz = 0
+                , maxx = 0
+                , maxy = 0
+                , maxz = 0
+                , medx = 0
+                , medy = 0
+                , medz = 0;
+            if (RotateAroundPoint)
             {
-                if (item.x < minx) minx = item.x;
-                if (item.x > maxx) maxx = item.x;
-                if (item.y < miny) miny = item.y;
-                if (item.y > maxy) maxy = item.y;
-                if (item.z < minz) minz = item.z;
-                if (item.z > maxz) maxz = item.z;
+                medx = Convert.ToDecimal(RotatePoint.X);
+                medy = Convert.ToDecimal(RotatePoint.Y);
+                medz = Convert.ToDecimal(RotatePoint.Z);
             }
-            medx = minx + ((maxx - minx) / 2);
-            medy = miny + ((maxy - miny) / 2);
-            medz = minz + ((maxz - minz) / 2);
+            else
+            {
+                minx = Items[0].x;
+                maxx = minx;
+                medx = minx;
+                miny = Items[0].y;
+                maxy = miny;
+                medy = miny;
+                minz = Items[0].z;
+                maxz = minz;
+                medz = minz;
+                foreach (HouseItem item in Items)
+                {
+                    if (item.x < minx) minx = item.x;
+                    if (item.x > maxx) maxx = item.x;
+                    if (item.y < miny) miny = item.y;
+                    if (item.y > maxy) maxy = item.y;
+                    if (item.z < minz) minz = item.z;
+                    if (item.z > maxz) maxz = item.z;
+                }
+                medx = minx + ((maxx - minx) / 2);
+                medy = miny + ((maxy - miny) / 2);
+                medz = minz + ((maxz - minz) / 2);
+            }
             int ItemCtr = Items.Length;
             double radRotation = RotationDegree / 180 * Math.PI;
             for (int curritem = 0; curritem < ItemCtr; curritem++)

@@ -26,6 +26,7 @@ namespace LayoutEdit
             if (od.ShowDialog(this) == DialogResult.Cancel) return;
             layout.FileName = od.FileName;
             dg.Columns["ItemName"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dg.Columns["ItemName"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             this.Text = "Layout Editor: " + layout.FileName + " - " + layout.HouseType + ": " + layout.HouseID;
             cboGroups.Items.Clear();
             cboGroups.Items.Add("New...");
@@ -39,6 +40,7 @@ namespace LayoutEdit
         {
             cboGroups.Items.Clear();
             cboGroups.Items.Add("New...");
+            cboCirclePlane.SelectedIndex = 0;
             dg.DataSource = layout.HouseItems;                      
             dg.Columns["x"].HeaderText = "+ West / - East (X)";
             dg.Columns["y"].HeaderText = "+ South / - North (Y)";
@@ -142,8 +144,8 @@ namespace LayoutEdit
             double FillPerc = (double)Fill.Value / 359d;
             double Radius = double.Parse(txtRadius.Text);
             Placement.DirectionType Reverse = (chkReverse.Checked) ? Placement.DirectionType.Reverse : Placement.DirectionType.Forward;
-            int Orientation = (chkVertical.Checked) ? 1 : 0;
-            int Facing = (chkEastWest.Checked) ? 1 : 0;
+            int Orientation = (cboCirclePlane.SelectedIndex != 0) ? 1 : 0;
+            int Facing = (cboCirclePlane.SelectedIndex == 1) ? 1 : 0;
             bool sVertical = rdo_From_Ground.Checked ;
             bool Spiral = chkSpiral.Checked;
             Items = Placement.CirclePlane(Items, CenterPoint, Orientation, Radius, Facing, double.Parse(txtEndZ.Text),
@@ -554,7 +556,7 @@ namespace LayoutEdit
                     if (dgr.IsNewRow) break;
                     if (CurrGrp.GetItems().Contains((Int32.Parse(dgr.Cells["DatabaseID"].Value.ToString()))))
                     {
-                        dgr.DefaultCellStyle.BackColor = Color.BlueViolet;
+                        dgr.DefaultCellStyle.BackColor = Color.Gold;
                     }
                     else
                     {
@@ -669,8 +671,10 @@ namespace LayoutEdit
             if (rdo_Pitch.Checked) ra = Placement.RotateAxis.x;
             if (rdo_Roll.Checked) ra = Placement.RotateAxis.y;
             Placement.HouseItem[] Items = SelectedGridToItems();
+            Placement.Vector3D CtrPt = new Placement.Vector3D(double.Parse(txt_rg_X.Text), double.Parse(txt_rg_Y.Text), double.Parse(txt_rg_Z.Text));
             double rotation = double.Parse(txtRotation.Text);
-            Items = Placement.RotateGroup(Items, rotation, ra);
+            bool RotateAroundPoint = (rdoCenter.Checked) ? false : true;
+            Items = Placement.RotateGroup(Items, rotation, ra, CtrPt, RotateAroundPoint);
             layout.ItemstoDB(Items);
         }
     }
