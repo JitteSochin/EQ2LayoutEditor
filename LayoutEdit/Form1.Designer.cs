@@ -52,7 +52,8 @@
             this.lblClearSearch = new System.Windows.Forms.Label();
             this.sd = new System.Windows.Forms.SaveFileDialog();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabCircleSpiral = new System.Windows.Forms.TabPage();
+            this.cboCirclePlane = new System.Windows.Forms.ComboBox();
             this.chkPointTops = new System.Windows.Forms.CheckBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtRevolutions = new System.Windows.Forms.TextBox();
@@ -75,7 +76,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtCirCentX = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabTile = new System.Windows.Forms.TabPage();
             this.chkSpaceLink = new System.Windows.Forms.CheckBox();
             this.txtUnitsZ = new System.Windows.Forms.TextBox();
             this.txtSpaceZ = new System.Windows.Forms.TextBox();
@@ -98,7 +99,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.txtStartX = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.tabMove = new System.Windows.Forms.TabPage();
             this.chkMassCrate = new System.Windows.Forms.CheckBox();
             this.txtMassScaling = new System.Windows.Forms.TextBox();
             this.btnScaling = new System.Windows.Forms.Button();
@@ -115,11 +116,11 @@
             this.btnEast = new System.Windows.Forms.Button();
             this.btnSouth = new System.Windows.Forms.Button();
             this.btnNorth = new System.Windows.Forms.Button();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tabOther = new System.Windows.Forms.TabPage();
             this.btnClone = new System.Windows.Forms.Button();
             this.btnManifest = new System.Windows.Forms.Button();
             this.btnDeleteCrate = new System.Windows.Forms.Button();
-            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.tabGroups = new System.Windows.Forms.TabPage();
             this.btnRenameGroup = new System.Windows.Forms.Button();
             this.btnClearFilter = new System.Windows.Forms.Button();
             this.btnFilterOutGrp = new System.Windows.Forms.Button();
@@ -130,10 +131,20 @@
             this.btnGroupItemAdd = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.cboGroups = new System.Windows.Forms.ComboBox();
-            this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.rdo_Roll = new System.Windows.Forms.RadioButton();
-            this.rdo_Pitch = new System.Windows.Forms.RadioButton();
+            this.tabRotate = new System.Windows.Forms.TabPage();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.txt_rg_Z = new System.Windows.Forms.TextBox();
+            this.txt_rg_Y = new System.Windows.Forms.TextBox();
+            this.txt_rg_X = new System.Windows.Forms.TextBox();
+            this.rdoPoint = new System.Windows.Forms.RadioButton();
+            this.rdoCenter = new System.Windows.Forms.RadioButton();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rdo_Rotate = new System.Windows.Forms.RadioButton();
+            this.rdo_Pitch = new System.Windows.Forms.RadioButton();
+            this.rdo_Roll = new System.Windows.Forms.RadioButton();
             this.label13 = new System.Windows.Forms.Label();
             this.btnGroupRotate = new System.Windows.Forms.Button();
             this.txtRotation = new System.Windows.Forms.TextBox();
@@ -141,29 +152,24 @@
             this.mnuShopCSV = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuShopHTML = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuShopBoth = new System.Windows.Forms.ToolStripMenuItem();
-            this.cboCirclePlane = new System.Windows.Forms.ComboBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.rdoCenter = new System.Windows.Forms.RadioButton();
-            this.rdoPoint = new System.Windows.Forms.RadioButton();
-            this.txt_rg_X = new System.Windows.Forms.TextBox();
-            this.txt_rg_Y = new System.Windows.Forms.TextBox();
-            this.txt_rg_Z = new System.Windows.Forms.TextBox();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.tabMirror = new System.Windows.Forms.TabPage();
+            this.cboMirrorPlane = new System.Windows.Forms.ComboBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.btnMirror = new System.Windows.Forms.Button();
+            this.chkMirrorRotate = new System.Windows.Forms.CheckBox();
             this.mnu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dg)).BeginInit();
             this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
-            this.tabPage4.SuspendLayout();
-            this.tabPage3.SuspendLayout();
-            this.tabPage5.SuspendLayout();
-            this.tabPage6.SuspendLayout();
-            this.mnuShopping.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.tabCircleSpiral.SuspendLayout();
+            this.tabTile.SuspendLayout();
+            this.tabMove.SuspendLayout();
+            this.tabOther.SuspendLayout();
+            this.tabGroups.SuspendLayout();
+            this.tabRotate.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.mnuShopping.SuspendLayout();
+            this.tabMirror.SuspendLayout();
             this.SuspendLayout();
             // 
             // mnu
@@ -173,7 +179,7 @@
             this.viewToolStripMenuItem});
             this.mnu.Location = new System.Drawing.Point(0, 0);
             this.mnu.Name = "mnu";
-            this.mnu.Size = new System.Drawing.Size(823, 24);
+            this.mnu.Size = new System.Drawing.Size(841, 24);
             this.mnu.TabIndex = 0;
             this.mnu.Text = "menuStrip1";
             // 
@@ -297,7 +303,7 @@
             this.dg.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dg.Location = new System.Drawing.Point(13, 28);
             this.dg.Name = "dg";
-            this.dg.Size = new System.Drawing.Size(560, 450);
+            this.dg.Size = new System.Drawing.Size(557, 450);
             this.dg.TabIndex = 1;
             this.dg.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_CellValueChanged);
             this.dg.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dg_RowsAdded);
@@ -308,7 +314,7 @@
             // txtSearch
             // 
             this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSearch.Location = new System.Drawing.Point(579, 44);
+            this.txtSearch.Location = new System.Drawing.Point(597, 44);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(231, 20);
             this.txtSearch.TabIndex = 2;
@@ -318,7 +324,7 @@
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(579, 28);
+            this.label1.Location = new System.Drawing.Point(597, 28);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 13);
             this.label1.TabIndex = 3;
@@ -329,7 +335,7 @@
             this.lblClearSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblClearSearch.AutoSize = true;
             this.lblClearSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblClearSearch.Location = new System.Drawing.Point(795, 28);
+            this.lblClearSearch.Location = new System.Drawing.Point(813, 28);
             this.lblClearSearch.Name = "lblClearSearch";
             this.lblClearSearch.Size = new System.Drawing.Size(15, 13);
             this.lblClearSearch.TabIndex = 4;
@@ -339,52 +345,66 @@
             // tabControl1
             // 
             this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage4);
-            this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Controls.Add(this.tabPage5);
-            this.tabControl1.Controls.Add(this.tabPage6);
+            this.tabControl1.Controls.Add(this.tabCircleSpiral);
+            this.tabControl1.Controls.Add(this.tabTile);
+            this.tabControl1.Controls.Add(this.tabMove);
+            this.tabControl1.Controls.Add(this.tabGroups);
+            this.tabControl1.Controls.Add(this.tabRotate);
+            this.tabControl1.Controls.Add(this.tabMirror);
+            this.tabControl1.Controls.Add(this.tabOther);
             this.tabControl1.HotTrack = true;
-            this.tabControl1.Location = new System.Drawing.Point(582, 70);
+            this.tabControl1.Location = new System.Drawing.Point(597, 70);
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(228, 383);
+            this.tabControl1.Size = new System.Drawing.Size(231, 389);
             this.tabControl1.TabIndex = 5;
             // 
-            // tabPage1
+            // tabCircleSpiral
             // 
-            this.tabPage1.Controls.Add(this.cboCirclePlane);
-            this.tabPage1.Controls.Add(this.chkPointTops);
-            this.tabPage1.Controls.Add(this.label7);
-            this.tabPage1.Controls.Add(this.txtRevolutions);
-            this.tabPage1.Controls.Add(this.label6);
-            this.tabPage1.Controls.Add(this.txtEndZ);
-            this.tabPage1.Controls.Add(this.rdo_From_Ground);
-            this.tabPage1.Controls.Add(this.rdo_From_Center);
-            this.tabPage1.Controls.Add(this.chkSpiral);
-            this.tabPage1.Controls.Add(this.chk90Offset);
-            this.tabPage1.Controls.Add(this.chkRotate);
-            this.tabPage1.Controls.Add(this.btnCircle);
-            this.tabPage1.Controls.Add(this.txtRadius);
-            this.tabPage1.Controls.Add(this.label5);
-            this.tabPage1.Controls.Add(this.chkReverse);
-            this.tabPage1.Controls.Add(this.lbl_Fill);
-            this.tabPage1.Controls.Add(this.lbl_off);
-            this.tabPage1.Controls.Add(this.txtCirCentZ);
-            this.tabPage1.Controls.Add(this.label4);
-            this.tabPage1.Controls.Add(this.txtCirCentY);
-            this.tabPage1.Controls.Add(this.label3);
-            this.tabPage1.Controls.Add(this.txtCirCentX);
-            this.tabPage1.Controls.Add(this.label2);
-            this.tabPage1.Location = new System.Drawing.Point(4, 40);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(220, 339);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Circle / Spiral";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabCircleSpiral.Controls.Add(this.cboCirclePlane);
+            this.tabCircleSpiral.Controls.Add(this.chkPointTops);
+            this.tabCircleSpiral.Controls.Add(this.label7);
+            this.tabCircleSpiral.Controls.Add(this.txtRevolutions);
+            this.tabCircleSpiral.Controls.Add(this.label6);
+            this.tabCircleSpiral.Controls.Add(this.txtEndZ);
+            this.tabCircleSpiral.Controls.Add(this.rdo_From_Ground);
+            this.tabCircleSpiral.Controls.Add(this.rdo_From_Center);
+            this.tabCircleSpiral.Controls.Add(this.chkSpiral);
+            this.tabCircleSpiral.Controls.Add(this.chk90Offset);
+            this.tabCircleSpiral.Controls.Add(this.chkRotate);
+            this.tabCircleSpiral.Controls.Add(this.btnCircle);
+            this.tabCircleSpiral.Controls.Add(this.txtRadius);
+            this.tabCircleSpiral.Controls.Add(this.label5);
+            this.tabCircleSpiral.Controls.Add(this.chkReverse);
+            this.tabCircleSpiral.Controls.Add(this.lbl_Fill);
+            this.tabCircleSpiral.Controls.Add(this.lbl_off);
+            this.tabCircleSpiral.Controls.Add(this.txtCirCentZ);
+            this.tabCircleSpiral.Controls.Add(this.label4);
+            this.tabCircleSpiral.Controls.Add(this.txtCirCentY);
+            this.tabCircleSpiral.Controls.Add(this.label3);
+            this.tabCircleSpiral.Controls.Add(this.txtCirCentX);
+            this.tabCircleSpiral.Controls.Add(this.label2);
+            this.tabCircleSpiral.Location = new System.Drawing.Point(4, 40);
+            this.tabCircleSpiral.Name = "tabCircleSpiral";
+            this.tabCircleSpiral.Padding = new System.Windows.Forms.Padding(3);
+            this.tabCircleSpiral.Size = new System.Drawing.Size(223, 343);
+            this.tabCircleSpiral.TabIndex = 0;
+            this.tabCircleSpiral.Text = "Circle / Spiral";
+            this.tabCircleSpiral.UseVisualStyleBackColor = true;
+            // 
+            // cboCirclePlane
+            // 
+            this.cboCirclePlane.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboCirclePlane.FormattingEnabled = true;
+            this.cboCirclePlane.Items.AddRange(new object[] {
+            "Z (Draw on Ground)",
+            "X (Draw on E/W Wall)",
+            "Y (Draw on N/S Wall)"});
+            this.cboCirclePlane.Location = new System.Drawing.Point(6, 156);
+            this.cboCirclePlane.Name = "cboCirclePlane";
+            this.cboCirclePlane.Size = new System.Drawing.Size(204, 21);
+            this.cboCirclePlane.TabIndex = 26;
             // 
             // chkPointTops
             // 
@@ -598,37 +618,37 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Center X";
             // 
-            // tabPage2
+            // tabTile
             // 
-            this.tabPage2.Controls.Add(this.chkSpaceLink);
-            this.tabPage2.Controls.Add(this.txtUnitsZ);
-            this.tabPage2.Controls.Add(this.txtSpaceZ);
-            this.tabPage2.Controls.Add(this.txtSpaceY);
-            this.tabPage2.Controls.Add(this.txtSpaceX);
-            this.tabPage2.Controls.Add(this.label18);
-            this.tabPage2.Controls.Add(this.label17);
-            this.tabPage2.Controls.Add(this.chkZeroRotation);
-            this.tabPage2.Controls.Add(this.chkIgnoreScaling);
-            this.tabPage2.Controls.Add(this.btnTile);
-            this.tabPage2.Controls.Add(this.label15);
-            this.tabPage2.Controls.Add(this.txtScaling);
-            this.tabPage2.Controls.Add(this.label14);
-            this.tabPage2.Controls.Add(this.txtUnitsX);
-            this.tabPage2.Controls.Add(this.label12);
-            this.tabPage2.Controls.Add(this.txtUnitsY);
-            this.tabPage2.Controls.Add(this.txtStartZ);
-            this.tabPage2.Controls.Add(this.label8);
-            this.tabPage2.Controls.Add(this.txtStartY);
-            this.tabPage2.Controls.Add(this.label9);
-            this.tabPage2.Controls.Add(this.txtStartX);
-            this.tabPage2.Controls.Add(this.label10);
-            this.tabPage2.Location = new System.Drawing.Point(4, 40);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(220, 339);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Tiling";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tabTile.Controls.Add(this.chkSpaceLink);
+            this.tabTile.Controls.Add(this.txtUnitsZ);
+            this.tabTile.Controls.Add(this.txtSpaceZ);
+            this.tabTile.Controls.Add(this.txtSpaceY);
+            this.tabTile.Controls.Add(this.txtSpaceX);
+            this.tabTile.Controls.Add(this.label18);
+            this.tabTile.Controls.Add(this.label17);
+            this.tabTile.Controls.Add(this.chkZeroRotation);
+            this.tabTile.Controls.Add(this.chkIgnoreScaling);
+            this.tabTile.Controls.Add(this.btnTile);
+            this.tabTile.Controls.Add(this.label15);
+            this.tabTile.Controls.Add(this.txtScaling);
+            this.tabTile.Controls.Add(this.label14);
+            this.tabTile.Controls.Add(this.txtUnitsX);
+            this.tabTile.Controls.Add(this.label12);
+            this.tabTile.Controls.Add(this.txtUnitsY);
+            this.tabTile.Controls.Add(this.txtStartZ);
+            this.tabTile.Controls.Add(this.label8);
+            this.tabTile.Controls.Add(this.txtStartY);
+            this.tabTile.Controls.Add(this.label9);
+            this.tabTile.Controls.Add(this.txtStartX);
+            this.tabTile.Controls.Add(this.label10);
+            this.tabTile.Location = new System.Drawing.Point(4, 40);
+            this.tabTile.Name = "tabTile";
+            this.tabTile.Padding = new System.Windows.Forms.Padding(3);
+            this.tabTile.Size = new System.Drawing.Size(223, 343);
+            this.tabTile.TabIndex = 1;
+            this.tabTile.Text = "Tile";
+            this.tabTile.UseVisualStyleBackColor = true;
             // 
             // chkSpaceLink
             // 
@@ -834,31 +854,31 @@
             this.label10.TabIndex = 6;
             this.label10.Text = "X";
             // 
-            // tabPage4
+            // tabMove
             // 
-            this.tabPage4.Controls.Add(this.chkMassCrate);
-            this.tabPage4.Controls.Add(this.txtMassScaling);
-            this.tabPage4.Controls.Add(this.btnScaling);
-            this.tabPage4.Controls.Add(this.label16);
-            this.tabPage4.Controls.Add(this.txtMoveAmount);
-            this.tabPage4.Controls.Add(this.btnInCrate);
-            this.tabPage4.Controls.Add(this.btnRotateReset);
-            this.tabPage4.Controls.Add(this.btnUp);
-            this.tabPage4.Controls.Add(this.btnDown);
-            this.tabPage4.Controls.Add(this.btnRotate);
-            this.tabPage4.Controls.Add(this.btnRoll);
-            this.tabPage4.Controls.Add(this.btnPitch);
-            this.tabPage4.Controls.Add(this.btnWest);
-            this.tabPage4.Controls.Add(this.btnEast);
-            this.tabPage4.Controls.Add(this.btnSouth);
-            this.tabPage4.Controls.Add(this.btnNorth);
-            this.tabPage4.Location = new System.Drawing.Point(4, 40);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(220, 339);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "Mass Move";
-            this.tabPage4.UseVisualStyleBackColor = true;
+            this.tabMove.Controls.Add(this.chkMassCrate);
+            this.tabMove.Controls.Add(this.txtMassScaling);
+            this.tabMove.Controls.Add(this.btnScaling);
+            this.tabMove.Controls.Add(this.label16);
+            this.tabMove.Controls.Add(this.txtMoveAmount);
+            this.tabMove.Controls.Add(this.btnInCrate);
+            this.tabMove.Controls.Add(this.btnRotateReset);
+            this.tabMove.Controls.Add(this.btnUp);
+            this.tabMove.Controls.Add(this.btnDown);
+            this.tabMove.Controls.Add(this.btnRotate);
+            this.tabMove.Controls.Add(this.btnRoll);
+            this.tabMove.Controls.Add(this.btnPitch);
+            this.tabMove.Controls.Add(this.btnWest);
+            this.tabMove.Controls.Add(this.btnEast);
+            this.tabMove.Controls.Add(this.btnSouth);
+            this.tabMove.Controls.Add(this.btnNorth);
+            this.tabMove.Location = new System.Drawing.Point(4, 40);
+            this.tabMove.Name = "tabMove";
+            this.tabMove.Padding = new System.Windows.Forms.Padding(3);
+            this.tabMove.Size = new System.Drawing.Size(223, 345);
+            this.tabMove.TabIndex = 3;
+            this.tabMove.Text = "Mass Move";
+            this.tabMove.UseVisualStyleBackColor = true;
             // 
             // chkMassCrate
             // 
@@ -1016,17 +1036,17 @@
             this.btnNorth.UseVisualStyleBackColor = true;
             this.btnNorth.Click += new System.EventHandler(this.MassMove_Click);
             // 
-            // tabPage3
+            // tabOther
             // 
-            this.tabPage3.Controls.Add(this.btnClone);
-            this.tabPage3.Controls.Add(this.btnManifest);
-            this.tabPage3.Controls.Add(this.btnDeleteCrate);
-            this.tabPage3.Location = new System.Drawing.Point(4, 40);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(220, 339);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Other Functions";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.tabOther.Controls.Add(this.btnClone);
+            this.tabOther.Controls.Add(this.btnManifest);
+            this.tabOther.Controls.Add(this.btnDeleteCrate);
+            this.tabOther.Location = new System.Drawing.Point(4, 40);
+            this.tabOther.Name = "tabOther";
+            this.tabOther.Size = new System.Drawing.Size(223, 345);
+            this.tabOther.TabIndex = 2;
+            this.tabOther.Text = "Other";
+            this.tabOther.UseVisualStyleBackColor = true;
             // 
             // btnClone
             // 
@@ -1058,24 +1078,24 @@
             this.btnDeleteCrate.UseVisualStyleBackColor = true;
             this.btnDeleteCrate.Click += new System.EventHandler(this.btnDeleteCrate_Click);
             // 
-            // tabPage5
+            // tabGroups
             // 
-            this.tabPage5.Controls.Add(this.btnRenameGroup);
-            this.tabPage5.Controls.Add(this.btnClearFilter);
-            this.tabPage5.Controls.Add(this.btnFilterOutGrp);
-            this.tabPage5.Controls.Add(this.btnFilterToGroup);
-            this.tabPage5.Controls.Add(this.btnGroupRemove);
-            this.tabPage5.Controls.Add(this.txtGroupName);
-            this.tabPage5.Controls.Add(this.btnGroupItemRemove);
-            this.tabPage5.Controls.Add(this.btnGroupItemAdd);
-            this.tabPage5.Controls.Add(this.label11);
-            this.tabPage5.Controls.Add(this.cboGroups);
-            this.tabPage5.Location = new System.Drawing.Point(4, 40);
-            this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(220, 339);
-            this.tabPage5.TabIndex = 4;
-            this.tabPage5.Text = "Groups";
-            this.tabPage5.UseVisualStyleBackColor = true;
+            this.tabGroups.Controls.Add(this.btnRenameGroup);
+            this.tabGroups.Controls.Add(this.btnClearFilter);
+            this.tabGroups.Controls.Add(this.btnFilterOutGrp);
+            this.tabGroups.Controls.Add(this.btnFilterToGroup);
+            this.tabGroups.Controls.Add(this.btnGroupRemove);
+            this.tabGroups.Controls.Add(this.txtGroupName);
+            this.tabGroups.Controls.Add(this.btnGroupItemRemove);
+            this.tabGroups.Controls.Add(this.btnGroupItemAdd);
+            this.tabGroups.Controls.Add(this.label11);
+            this.tabGroups.Controls.Add(this.cboGroups);
+            this.tabGroups.Location = new System.Drawing.Point(4, 40);
+            this.tabGroups.Name = "tabGroups";
+            this.tabGroups.Size = new System.Drawing.Size(223, 345);
+            this.tabGroups.TabIndex = 4;
+            this.tabGroups.Text = "Groups";
+            this.tabGroups.UseVisualStyleBackColor = true;
             // 
             // btnRenameGroup
             // 
@@ -1177,40 +1197,125 @@
             this.cboGroups.TabIndex = 0;
             this.cboGroups.SelectedIndexChanged += new System.EventHandler(this.cboGroups_SelectedIndexChanged);
             // 
-            // tabPage6
+            // tabRotate
             // 
-            this.tabPage6.Controls.Add(this.groupBox2);
-            this.tabPage6.Controls.Add(this.groupBox1);
-            this.tabPage6.Controls.Add(this.label13);
-            this.tabPage6.Controls.Add(this.btnGroupRotate);
-            this.tabPage6.Controls.Add(this.txtRotation);
-            this.tabPage6.Location = new System.Drawing.Point(4, 40);
-            this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(220, 339);
-            this.tabPage6.TabIndex = 5;
-            this.tabPage6.Text = "Rotate Items";
-            this.tabPage6.UseVisualStyleBackColor = true;
+            this.tabRotate.Controls.Add(this.groupBox2);
+            this.tabRotate.Controls.Add(this.groupBox1);
+            this.tabRotate.Controls.Add(this.label13);
+            this.tabRotate.Controls.Add(this.btnGroupRotate);
+            this.tabRotate.Controls.Add(this.txtRotation);
+            this.tabRotate.Location = new System.Drawing.Point(4, 40);
+            this.tabRotate.Name = "tabRotate";
+            this.tabRotate.Padding = new System.Windows.Forms.Padding(3);
+            this.tabRotate.Size = new System.Drawing.Size(223, 345);
+            this.tabRotate.TabIndex = 5;
+            this.tabRotate.Text = "Rotate Items";
+            this.tabRotate.UseVisualStyleBackColor = true;
             // 
-            // rdo_Roll
+            // groupBox2
             // 
-            this.rdo_Roll.AutoSize = true;
-            this.rdo_Roll.Location = new System.Drawing.Point(6, 51);
-            this.rdo_Roll.Name = "rdo_Roll";
-            this.rdo_Roll.Size = new System.Drawing.Size(81, 17);
-            this.rdo_Roll.TabIndex = 5;
-            this.rdo_Roll.Text = "Y Axis (Roll)";
-            this.rdo_Roll.UseVisualStyleBackColor = true;
+            this.groupBox2.Controls.Add(this.label20);
+            this.groupBox2.Controls.Add(this.label21);
+            this.groupBox2.Controls.Add(this.label22);
+            this.groupBox2.Controls.Add(this.txt_rg_Z);
+            this.groupBox2.Controls.Add(this.txt_rg_Y);
+            this.groupBox2.Controls.Add(this.txt_rg_X);
+            this.groupBox2.Controls.Add(this.rdoPoint);
+            this.groupBox2.Controls.Add(this.rdoCenter);
+            this.groupBox2.Location = new System.Drawing.Point(10, 146);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(200, 100);
+            this.groupBox2.TabIndex = 8;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Rotate Around...";
             // 
-            // rdo_Pitch
+            // label20
             // 
-            this.rdo_Pitch.AutoSize = true;
-            this.rdo_Pitch.Location = new System.Drawing.Point(6, 35);
-            this.rdo_Pitch.Name = "rdo_Pitch";
-            this.rdo_Pitch.Size = new System.Drawing.Size(87, 17);
-            this.rdo_Pitch.TabIndex = 4;
-            this.rdo_Pitch.Text = "X Axis (Pitch)";
-            this.rdo_Pitch.UseVisualStyleBackColor = true;
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(121, 58);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(14, 13);
+            this.label20.TabIndex = 13;
+            this.label20.Text = "Z";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(73, 58);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(14, 13);
+            this.label21.TabIndex = 12;
+            this.label21.Text = "Y";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(22, 58);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(14, 13);
+            this.label22.TabIndex = 11;
+            this.label22.Text = "X";
+            // 
+            // txt_rg_Z
+            // 
+            this.txt_rg_Z.Location = new System.Drawing.Point(106, 74);
+            this.txt_rg_Z.Name = "txt_rg_Z";
+            this.txt_rg_Z.Size = new System.Drawing.Size(44, 20);
+            this.txt_rg_Z.TabIndex = 4;
+            this.txt_rg_Z.Text = "0";
+            this.txt_rg_Z.Leave += new System.EventHandler(this.NumberText_Leave);
+            // 
+            // txt_rg_Y
+            // 
+            this.txt_rg_Y.Location = new System.Drawing.Point(56, 74);
+            this.txt_rg_Y.Name = "txt_rg_Y";
+            this.txt_rg_Y.Size = new System.Drawing.Size(44, 20);
+            this.txt_rg_Y.TabIndex = 3;
+            this.txt_rg_Y.Text = "0";
+            this.txt_rg_Y.Leave += new System.EventHandler(this.NumberText_Leave);
+            // 
+            // txt_rg_X
+            // 
+            this.txt_rg_X.Location = new System.Drawing.Point(6, 74);
+            this.txt_rg_X.Name = "txt_rg_X";
+            this.txt_rg_X.Size = new System.Drawing.Size(44, 20);
+            this.txt_rg_X.TabIndex = 2;
+            this.txt_rg_X.Text = "0";
+            this.txt_rg_X.Leave += new System.EventHandler(this.NumberText_Leave);
+            // 
+            // rdoPoint
+            // 
+            this.rdoPoint.AutoSize = true;
+            this.rdoPoint.Location = new System.Drawing.Point(6, 35);
+            this.rdoPoint.Name = "rdoPoint";
+            this.rdoPoint.Size = new System.Drawing.Size(66, 17);
+            this.rdoPoint.TabIndex = 1;
+            this.rdoPoint.Text = "Location";
+            this.rdoPoint.UseVisualStyleBackColor = true;
+            // 
+            // rdoCenter
+            // 
+            this.rdoCenter.AutoSize = true;
+            this.rdoCenter.Checked = true;
+            this.rdoCenter.Location = new System.Drawing.Point(6, 19);
+            this.rdoCenter.Name = "rdoCenter";
+            this.rdoCenter.Size = new System.Drawing.Size(140, 17);
+            this.rdoCenter.TabIndex = 0;
+            this.rdoCenter.TabStop = true;
+            this.rdoCenter.Text = "Determined Center Point";
+            this.rdoCenter.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.rdo_Rotate);
+            this.groupBox1.Controls.Add(this.rdo_Pitch);
+            this.groupBox1.Controls.Add(this.rdo_Roll);
+            this.groupBox1.Location = new System.Drawing.Point(10, 61);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(154, 78);
+            this.groupBox1.TabIndex = 7;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Rotate On...";
             // 
             // rdo_Rotate
             // 
@@ -1223,6 +1328,26 @@
             this.rdo_Rotate.TabStop = true;
             this.rdo_Rotate.Text = "Z Axis (Rotate)";
             this.rdo_Rotate.UseVisualStyleBackColor = true;
+            // 
+            // rdo_Pitch
+            // 
+            this.rdo_Pitch.AutoSize = true;
+            this.rdo_Pitch.Location = new System.Drawing.Point(6, 35);
+            this.rdo_Pitch.Name = "rdo_Pitch";
+            this.rdo_Pitch.Size = new System.Drawing.Size(87, 17);
+            this.rdo_Pitch.TabIndex = 4;
+            this.rdo_Pitch.Text = "X Axis (Pitch)";
+            this.rdo_Pitch.UseVisualStyleBackColor = true;
+            // 
+            // rdo_Roll
+            // 
+            this.rdo_Roll.AutoSize = true;
+            this.rdo_Roll.Location = new System.Drawing.Point(6, 51);
+            this.rdo_Roll.Name = "rdo_Roll";
+            this.rdo_Roll.Size = new System.Drawing.Size(81, 17);
+            this.rdo_Roll.TabIndex = 5;
+            this.rdo_Roll.Text = "Y Axis (Roll)";
+            this.rdo_Roll.UseVisualStyleBackColor = true;
             // 
             // label13
             // 
@@ -1282,129 +1407,76 @@
             this.mnuShopBoth.Text = "Generate CSV and HTML";
             this.mnuShopBoth.Click += new System.EventHandler(this.mnuShopping_ItemClick);
             // 
-            // cboCirclePlane
+            // tabMirror
             // 
-            this.cboCirclePlane.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboCirclePlane.FormattingEnabled = true;
-            this.cboCirclePlane.Items.AddRange(new object[] {
-            "Z (Draw on Ground)",
-            "X (Draw on E/W Wall)",
-            "Y (Draw on N/S Wall)"});
-            this.cboCirclePlane.Location = new System.Drawing.Point(6, 156);
-            this.cboCirclePlane.Name = "cboCirclePlane";
-            this.cboCirclePlane.Size = new System.Drawing.Size(204, 21);
-            this.cboCirclePlane.TabIndex = 26;
+            this.tabMirror.Controls.Add(this.chkMirrorRotate);
+            this.tabMirror.Controls.Add(this.btnMirror);
+            this.tabMirror.Controls.Add(this.label19);
+            this.tabMirror.Controls.Add(this.cboMirrorPlane);
+            this.tabMirror.Location = new System.Drawing.Point(4, 40);
+            this.tabMirror.Name = "tabMirror";
+            this.tabMirror.Padding = new System.Windows.Forms.Padding(3);
+            this.tabMirror.Size = new System.Drawing.Size(223, 345);
+            this.tabMirror.TabIndex = 6;
+            this.tabMirror.Text = "Mirror";
+            this.tabMirror.UseVisualStyleBackColor = true;
             // 
-            // groupBox1
+            // cboMirrorPlane
             // 
-            this.groupBox1.Controls.Add(this.rdo_Rotate);
-            this.groupBox1.Controls.Add(this.rdo_Pitch);
-            this.groupBox1.Controls.Add(this.rdo_Roll);
-            this.groupBox1.Location = new System.Drawing.Point(10, 61);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(154, 78);
-            this.groupBox1.TabIndex = 7;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Rotate On...";
+            this.cboMirrorPlane.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboMirrorPlane.FormattingEnabled = true;
+            this.cboMirrorPlane.Items.AddRange(new object[] {
+            "Z Plane (Ground)",
+            "- Mirror Items Upwards",
+            "- Mirror Items Downwards",
+            "X Plane (East/West)",
+            "- Mirror Items to East",
+            "- Mirror Items to West",
+            "Y Plane (North/South)",
+            "- Mirror Items North",
+            "- Mirror Items South"});
+            this.cboMirrorPlane.Location = new System.Drawing.Point(7, 22);
+            this.cboMirrorPlane.Name = "cboMirrorPlane";
+            this.cboMirrorPlane.Size = new System.Drawing.Size(210, 21);
+            this.cboMirrorPlane.TabIndex = 0;
             // 
-            // rdoCenter
+            // label19
             // 
-            this.rdoCenter.AutoSize = true;
-            this.rdoCenter.Checked = true;
-            this.rdoCenter.Location = new System.Drawing.Point(6, 19);
-            this.rdoCenter.Name = "rdoCenter";
-            this.rdoCenter.Size = new System.Drawing.Size(140, 17);
-            this.rdoCenter.TabIndex = 0;
-            this.rdoCenter.TabStop = true;
-            this.rdoCenter.Text = "Determined Center Point";
-            this.rdoCenter.UseVisualStyleBackColor = true;
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(7, 4);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(77, 13);
+            this.label19.TabIndex = 1;
+            this.label19.Text = "Rotation Plane";
             // 
-            // rdoPoint
+            // btnMirror
             // 
-            this.rdoPoint.AutoSize = true;
-            this.rdoPoint.Location = new System.Drawing.Point(6, 35);
-            this.rdoPoint.Name = "rdoPoint";
-            this.rdoPoint.Size = new System.Drawing.Size(66, 17);
-            this.rdoPoint.TabIndex = 1;
-            this.rdoPoint.Text = "Location";
-            this.rdoPoint.UseVisualStyleBackColor = true;
+            this.btnMirror.Location = new System.Drawing.Point(142, 72);
+            this.btnMirror.Name = "btnMirror";
+            this.btnMirror.Size = new System.Drawing.Size(75, 23);
+            this.btnMirror.TabIndex = 2;
+            this.btnMirror.Text = "Mirror!";
+            this.btnMirror.UseVisualStyleBackColor = true;
+            this.btnMirror.Click += new System.EventHandler(this.btnMirror_Click);
             // 
-            // txt_rg_X
+            // chkMirrorRotate
             // 
-            this.txt_rg_X.Location = new System.Drawing.Point(6, 74);
-            this.txt_rg_X.Name = "txt_rg_X";
-            this.txt_rg_X.Size = new System.Drawing.Size(44, 20);
-            this.txt_rg_X.TabIndex = 2;
-            this.txt_rg_X.Text = "0";
-            this.txt_rg_X.Leave += new System.EventHandler(this.NumberText_Leave);
-            // 
-            // txt_rg_Y
-            // 
-            this.txt_rg_Y.Location = new System.Drawing.Point(56, 74);
-            this.txt_rg_Y.Name = "txt_rg_Y";
-            this.txt_rg_Y.Size = new System.Drawing.Size(44, 20);
-            this.txt_rg_Y.TabIndex = 3;
-            this.txt_rg_Y.Text = "0";
-            this.txt_rg_Y.Leave += new System.EventHandler(this.NumberText_Leave);
-            // 
-            // txt_rg_Z
-            // 
-            this.txt_rg_Z.Location = new System.Drawing.Point(106, 74);
-            this.txt_rg_Z.Name = "txt_rg_Z";
-            this.txt_rg_Z.Size = new System.Drawing.Size(44, 20);
-            this.txt_rg_Z.TabIndex = 4;
-            this.txt_rg_Z.Text = "0";
-            this.txt_rg_Z.Leave += new System.EventHandler(this.NumberText_Leave);
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(22, 58);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(14, 13);
-            this.label22.TabIndex = 11;
-            this.label22.Text = "X";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(73, 58);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(14, 13);
-            this.label21.TabIndex = 12;
-            this.label21.Text = "Y";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(121, 58);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(14, 13);
-            this.label20.TabIndex = 13;
-            this.label20.Text = "Z";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.label20);
-            this.groupBox2.Controls.Add(this.label21);
-            this.groupBox2.Controls.Add(this.label22);
-            this.groupBox2.Controls.Add(this.txt_rg_Z);
-            this.groupBox2.Controls.Add(this.txt_rg_Y);
-            this.groupBox2.Controls.Add(this.txt_rg_X);
-            this.groupBox2.Controls.Add(this.rdoPoint);
-            this.groupBox2.Controls.Add(this.rdoCenter);
-            this.groupBox2.Location = new System.Drawing.Point(10, 146);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(200, 100);
-            this.groupBox2.TabIndex = 8;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Rotate Around...";
+            this.chkMirrorRotate.AutoSize = true;
+            this.chkMirrorRotate.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.chkMirrorRotate.Checked = true;
+            this.chkMirrorRotate.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkMirrorRotate.Location = new System.Drawing.Point(86, 49);
+            this.chkMirrorRotate.Name = "chkMirrorRotate";
+            this.chkMirrorRotate.Size = new System.Drawing.Size(131, 17);
+            this.chkMirrorRotate.TabIndex = 3;
+            this.chkMirrorRotate.Text = "Rotate Items on Plane";
+            this.chkMirrorRotate.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(823, 490);
+            this.ClientSize = new System.Drawing.Size(841, 490);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.lblClearSearch);
             this.Controls.Add(this.label1);
@@ -1421,22 +1493,24 @@
             this.mnu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dg)).EndInit();
             this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
-            this.tabPage4.ResumeLayout(false);
-            this.tabPage4.PerformLayout();
-            this.tabPage3.ResumeLayout(false);
-            this.tabPage5.ResumeLayout(false);
-            this.tabPage5.PerformLayout();
-            this.tabPage6.ResumeLayout(false);
-            this.tabPage6.PerformLayout();
-            this.mnuShopping.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.tabCircleSpiral.ResumeLayout(false);
+            this.tabCircleSpiral.PerformLayout();
+            this.tabTile.ResumeLayout(false);
+            this.tabTile.PerformLayout();
+            this.tabMove.ResumeLayout(false);
+            this.tabMove.PerformLayout();
+            this.tabOther.ResumeLayout(false);
+            this.tabGroups.ResumeLayout(false);
+            this.tabGroups.PerformLayout();
+            this.tabRotate.ResumeLayout(false);
+            this.tabRotate.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.mnuShopping.ResumeLayout(false);
+            this.tabMirror.ResumeLayout(false);
+            this.tabMirror.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1456,14 +1530,14 @@
         private System.Windows.Forms.ToolStripMenuItem mnuSaveAs;
         private System.Windows.Forms.SaveFileDialog sd;
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabCircleSpiral;
         private System.Windows.Forms.TextBox txtCirCentZ;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtCirCentY;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtCirCentX;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tabTile;
         private System.Windows.Forms.Label lbl_off;
         private System.Windows.Forms.Label lbl_Fill;
         private System.Windows.Forms.TextBox txtRadius;
@@ -1493,12 +1567,12 @@
         private System.Windows.Forms.Button btnTile;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.CheckBox chkIgnoreScaling;
-        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TabPage tabOther;
         private System.Windows.Forms.Button btnDeleteCrate;
         private System.Windows.Forms.Button btnManifest;
         private System.Windows.Forms.Button btnClone;
         private System.Windows.Forms.CheckBox chkZeroRotation;
-        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.TabPage tabMove;
         private System.Windows.Forms.Button btnWest;
         private System.Windows.Forms.Button btnEast;
         private System.Windows.Forms.Button btnSouth;
@@ -1528,7 +1602,7 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox txtUnitsZ;
         private System.Windows.Forms.CheckBox chkSpaceLink;
-        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.TabPage tabGroups;
         private System.Windows.Forms.Button btnFilterOutGrp;
         private System.Windows.Forms.Button btnFilterToGroup;
         private System.Windows.Forms.Button btnGroupRemove;
@@ -1548,7 +1622,7 @@
         private System.Windows.Forms.ToolStripMenuItem importGroupFromFileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem importNotesFromFileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mergeAnotherLayoutIntoCurrentFileToolStripMenuItem;
-        private System.Windows.Forms.TabPage tabPage6;
+        private System.Windows.Forms.TabPage tabRotate;
         private System.Windows.Forms.Button btnGroupRotate;
         private System.Windows.Forms.TextBox txtRotation;
         private System.Windows.Forms.RadioButton rdo_Roll;
@@ -1566,6 +1640,11 @@
         private System.Windows.Forms.RadioButton rdoPoint;
         private System.Windows.Forms.RadioButton rdoCenter;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TabPage tabMirror;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.ComboBox cboMirrorPlane;
+        private System.Windows.Forms.Button btnMirror;
+        private System.Windows.Forms.CheckBox chkMirrorRotate;
     }
 }
 

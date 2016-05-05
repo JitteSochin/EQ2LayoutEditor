@@ -16,9 +16,14 @@ namespace LayoutEdit
         LayoutFile layout = new LayoutFile();
         Dial Percentage = new Dial();
         Dial Fill = new Dial();
+        private Int64 ClonedHouseItemDBId = 99999999;
         public Form1()
         {
             InitializeComponent();
+            /* JesDer 2016-04-15 */
+            // Fix decimal separator issues by setting culture to en-US 
+            System.Threading.Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.CreateSpecificCulture("en-US");
+            System.Threading.Thread.CurrentThread.CurrentUICulture = System.Globalization.CultureInfo.CreateSpecificCulture("en-US");
         }
 
         private void btnLoad_Click(object sender, EventArgs e)
@@ -63,22 +68,22 @@ namespace LayoutEdit
             Percentage.Left = lbl_off.Left; ;
             Percentage.Width = 50;
             Percentage.Height = 50;
-            Percentage.BackColor = tabPage1.BackColor;
+            Percentage.BackColor = tabCircleSpiral.BackColor;
             Percentage.Wrap = true;
             Percentage.ValueChanged += new EventHandler(Percentage_ValueChanged);
-            tabPage1.Controls.Add(Percentage);
+            tabCircleSpiral.Controls.Add(Percentage);
 
             Fill.Top = lbl_Fill.Bottom;
             Fill.Left = lbl_Fill.Left;
             Fill.Width = 50;
             Fill.Height = 50;
-            Fill.BackColor = tabPage1.BackColor;
+            Fill.BackColor = tabCircleSpiral.BackColor;
             Fill.Wrap = false;
             Fill.StartingOffset = 270;
             Fill.FillMode = Dial.FillType.Pie;
             Fill.ValueChanged += new EventHandler(Fill_ValueChanged);
             Fill.Value = 359;
-            tabPage1.Controls.Add(Fill);
+            tabCircleSpiral.Controls.Add(Fill);
         }
 
         void Fill_ValueChanged(object sender, EventArgs e)
@@ -282,7 +287,7 @@ namespace LayoutEdit
             foreach (DataGridViewRow row in dg.SelectedRows)
             {
                 DataRow DR = layout.HouseItems.NewRow();
-                DR["DatabaseID"] = -1;
+                DR["DatabaseID"] = ClonedHouseItemDBId;
                 DR["InCrate"] = bool.Parse(row.Cells["InCrate"].Value.ToString());
                 DR["ItemID"] = Int64.Parse(row.Cells["ItemID"].Value.ToString());
                 DR["ItemName"] = row.Cells["ItemName"].Value.ToString();
@@ -294,6 +299,7 @@ namespace LayoutEdit
                 DR["y"] = decimal.Parse(row.Cells["y"].Value.ToString());
                 DR["z"] = decimal.Parse(row.Cells["z"].Value.ToString());
                 layout.HouseItems.Rows.Add(DR);
+                ClonedHouseItemDBId--;
             }
         }
 
@@ -676,6 +682,90 @@ namespace LayoutEdit
             bool RotateAroundPoint = (rdoCenter.Checked) ? false : true;
             Items = Placement.RotateGroup(Items, rotation, ra, CtrPt, RotateAroundPoint);
             layout.ItemstoDB(Items);
+        }
+
+        private void btnMirror_Click(object sender, EventArgs e)
+        {
+            if (cboMirrorPlane.SelectedIndex == 0 || cboMirrorPlane.SelectedIndex == 3 || cboMirrorPlane.SelectedIndex == 6)
+            {
+                MessageBox.Show("Please select a mirror direction");
+                return;
+            }
+            Placement.HouseItem[] Items = SelectedGridToItems();
+            decimal anchorpoint = 0;
+            bool anchorset = false, rotate = chkMirrorRotate.Checked;
+            decimal modifier = 1;
+            // Find the anchor point that will be the "Mirror" plane. 
+            foreach (Placement.HouseItem Item in Items)
+            {
+                switch (cboMirrorPlane.SelectedIndex)
+                {
+                    case 1: //- Mirror Items Upwards
+                        if (anchorset && anchorpoint < Item.z) anchorpoint = Item.z;
+                        if (!anchorset) { anchorpoint = Item.z; anchorset = true; }
+                        break;
+                    case 2: //- Mirror Items Downwards
+                        if (anchorset && anchorpoint > Item.z) anchorpoint = Item.z;
+                        if (!anchorset) { anchorpoint = Item.z; anchorset = true; }
+                        modifier = -1;
+                        break;
+                    case 4: //- Mirror Items to East
+                        if (anchorset && anchorpoint > Item.x) anchorpoint = Item.x;
+                        if (!anchorset) { anchorpoint = Item.x; anchorset = true; }
+                        modifier = -1;
+                        break;
+                    case 5: //- Mirror Items to West
+                        if (anchorset && anchorpoint < Item.x) anchorpoint = Item.x;
+                        if (!anchorset) { anchorpoint = Item.x; anchorset = true; }
+                        break;
+                    case 7: //- Mirror Items North
+                        if (anchorset && anchorpoint > Item.y) anchorpoint = Item.y;
+                        if (!anchorset) { anchorpoint = Item.y; anchorset = true; }
+                        modifier = -1;
+                        break;
+                    case 8: //- Mirror Items South
+                        if (anchorset && anchorpoint < Item.y) anchorpoint = Item.y;
+                        if (!anchorset) { anchorpoint = Item.y; anchorset = true; }
+                        break;
+                }
+            }
+            // Mirror the items on the anchor
+            for (int ItemNbr = 0; ItemNbr < Items.Length; ItemNbr++)
+            {
+                // Clone the item
+                DataRow DR = layout.HouseItems.NewRow();
+                DR["DatabaseID"] = ClonedHouseItemDBId;
+                DR["InCrate"] = Items[ItemNbr].InCrate;
+                DR["ItemID"] = Items[ItemNbr].ItemID;
+                DR["ItemName"] = Items[ItemNbr].ItemName;
+                DR["Pitch"] = Items[ItemNbr].Pitch;
+                DR["Roll"] = Items[ItemNbr].Roll;
+                DR["Rotation"] = Items[ItemNbr].Rotation;
+                DR["Scale"] = Items[ItemNbr].Scale;
+                DR["x"] = Items[ItemNbr].x;
+                DR["y"] = Items[ItemNbr].y;
+                DR["z"] = Items[ItemNbr].z;
+                ClonedHouseItemDBId--;
+                switch (cboMirrorPlane.SelectedIndex)
+                {
+                    case 1: //- Mirror Items Upwards // X/Y remains
+                    case 2: //- Mirror Items Downwards // X/Y remains
+                        DR["z"] = Items[ItemNbr].z + 2 * (Math.Abs(Items[ItemNbr].z - anchorpoint)) * modifier;
+                        if (rotate) DR["Pitch"] = Items[ItemNbr].Pitch - 180;
+                        break;
+                    case 4: //- Mirror Items to East // Z/Y remains
+                    case 5: //- Mirror Items to West // Z/Y remains
+                        DR["x"] = Items[ItemNbr].x + 2 * (Math.Abs(Items[ItemNbr].x - anchorpoint)) * modifier;
+                        if (rotate) DR["Rotation"] = Items[ItemNbr].Rotation - 180;
+                        break;
+                    case 7: //- Mirror Items North // X/Z remains
+                    case 8: //- Mirror Items South // X/Z remains
+                        DR["y"] = Items[ItemNbr].y + 2 * (Math.Abs(Items[ItemNbr].y - anchorpoint)) * modifier;
+                        if (rotate) DR["Rotation"] = Items[ItemNbr].Rotation - 180;
+                        break;
+                }
+                layout.HouseItems.Rows.Add(DR);
+            }
         }
     }
 }
