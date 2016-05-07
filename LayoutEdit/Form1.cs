@@ -24,11 +24,13 @@ namespace LayoutEdit
             // Fix decimal separator issues by setting culture to en-US 
             System.Threading.Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.CreateSpecificCulture("en-US");
             System.Threading.Thread.CurrentThread.CurrentUICulture = System.Globalization.CultureInfo.CreateSpecificCulture("en-US");
+            ttThickness.SetToolTip(txtPlaneThick, "This sets the \"Thickness\" of the mirror. Creating a gap between the items at the plane");
         }
 
         private void btnLoad_Click(object sender, EventArgs e)
         {
             if (od.ShowDialog(this) == DialogResult.Cancel) return;
+            ClonedHouseItemDBId = 99999999;
             layout.FileName = od.FileName;
             dg.Columns["ItemName"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dg.Columns["ItemName"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
@@ -287,7 +289,7 @@ namespace LayoutEdit
             foreach (DataGridViewRow row in dg.SelectedRows)
             {
                 DataRow DR = layout.HouseItems.NewRow();
-                DR["DatabaseID"] = ClonedHouseItemDBId;
+                
                 DR["InCrate"] = bool.Parse(row.Cells["InCrate"].Value.ToString());
                 DR["ItemID"] = Int64.Parse(row.Cells["ItemID"].Value.ToString());
                 DR["ItemName"] = row.Cells["ItemName"].Value.ToString();
@@ -298,8 +300,17 @@ namespace LayoutEdit
                 DR["x"] = decimal.Parse(row.Cells["x"].Value.ToString());
                 DR["y"] = decimal.Parse(row.Cells["y"].Value.ToString());
                 DR["z"] = decimal.Parse(row.Cells["z"].Value.ToString());
-                layout.HouseItems.Rows.Add(DR);
+            clonePreAdd:
+                DR["DatabaseID"] = ClonedHouseItemDBId;
                 ClonedHouseItemDBId--;
+                try
+                {
+                    layout.HouseItems.Rows.Add(DR);
+                }
+                catch
+                {
+                    goto clonePreAdd;
+                }
             }
         }
 
@@ -312,6 +323,7 @@ namespace LayoutEdit
                 if (MessageBox.Show("The layout file has been changed since last load. Reload?", "File Changed", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     layout.Refresh();
+                    ClonedHouseItemDBId = 99999999;
                 }
             }
         }
@@ -691,6 +703,7 @@ namespace LayoutEdit
                 MessageBox.Show("Please select a mirror direction");
                 return;
             }
+            decimal PlaneThickness = Decimal.Parse(txtPlaneThick.Text);
             Placement.HouseItem[] Items = SelectedGridToItems();
             decimal anchorpoint = 0;
             bool anchorset = false, rotate = chkMirrorRotate.Checked;
@@ -734,7 +747,7 @@ namespace LayoutEdit
             {
                 // Clone the item
                 DataRow DR = layout.HouseItems.NewRow();
-                DR["DatabaseID"] = ClonedHouseItemDBId;
+                
                 DR["InCrate"] = Items[ItemNbr].InCrate;
                 DR["ItemID"] = Items[ItemNbr].ItemID;
                 DR["ItemName"] = Items[ItemNbr].ItemName;
@@ -745,26 +758,41 @@ namespace LayoutEdit
                 DR["x"] = Items[ItemNbr].x;
                 DR["y"] = Items[ItemNbr].y;
                 DR["z"] = Items[ItemNbr].z;
-                ClonedHouseItemDBId--;
+                
                 switch (cboMirrorPlane.SelectedIndex)
                 {
                     case 1: //- Mirror Items Upwards // X/Y remains
                     case 2: //- Mirror Items Downwards // X/Y remains
-                        DR["z"] = Items[ItemNbr].z + 2 * (Math.Abs(Items[ItemNbr].z - anchorpoint)) * modifier;
+                        DR["z"] = Items[ItemNbr].z + 2 * (Math.Abs(Items[ItemNbr].z - anchorpoint) + PlaneThickness) * modifier;
+                        if (rotate) DR["Rotation"] = Items[ItemNbr].Rotation - 180;
                         if (rotate) DR["Pitch"] = Items[ItemNbr].Pitch - 180;
+                        if (rotate && Items[ItemNbr].Rotation == 0) DR["Rotation"] = 180;
                         break;
                     case 4: //- Mirror Items to East // Z/Y remains
                     case 5: //- Mirror Items to West // Z/Y remains
-                        DR["x"] = Items[ItemNbr].x + 2 * (Math.Abs(Items[ItemNbr].x - anchorpoint)) * modifier;
-                        if (rotate) DR["Rotation"] = Items[ItemNbr].Rotation - 180;
+                        DR["x"] = Items[ItemNbr].x + 2 * (Math.Abs(Items[ItemNbr].x - anchorpoint) + PlaneThickness) * modifier;
+                        if (rotate) DR["Rotation"] = 360 - Items[ItemNbr].Rotation;
+                        if (rotate && Items[ItemNbr].Rotation == 0) DR["Rotation"] = 180;
                         break;
                     case 7: //- Mirror Items North // X/Z remains
                     case 8: //- Mirror Items South // X/Z remains
-                        DR["y"] = Items[ItemNbr].y + 2 * (Math.Abs(Items[ItemNbr].y - anchorpoint)) * modifier;
-                        if (rotate) DR["Rotation"] = Items[ItemNbr].Rotation - 180;
+                        DR["y"] = Items[ItemNbr].y + 2 * (Math.Abs(Items[ItemNbr].y - anchorpoint) + PlaneThickness) * modifier;
+                        if (rotate) DR["Rotation"] = 180 - Items[ItemNbr].Rotation;
+                        if (rotate && Items[ItemNbr].Rotation == 0) DR["Rotation"] = 180;
                         break;
                 }
-                layout.HouseItems.Rows.Add(DR);
+                
+            mirrorPreAdd:
+                DR["DatabaseID"] = ClonedHouseItemDBId;
+                ClonedHouseItemDBId--;
+                try 
+                { 
+                    layout.HouseItems.Rows.Add(DR);
+                }
+                catch
+                {
+                    goto mirrorPreAdd;
+                }
             }
         }
     }

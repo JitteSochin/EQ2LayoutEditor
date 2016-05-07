@@ -116,10 +116,6 @@
             this.btnEast = new System.Windows.Forms.Button();
             this.btnSouth = new System.Windows.Forms.Button();
             this.btnNorth = new System.Windows.Forms.Button();
-            this.tabOther = new System.Windows.Forms.TabPage();
-            this.btnClone = new System.Windows.Forms.Button();
-            this.btnManifest = new System.Windows.Forms.Button();
-            this.btnDeleteCrate = new System.Windows.Forms.Button();
             this.tabGroups = new System.Windows.Forms.TabPage();
             this.btnRenameGroup = new System.Windows.Forms.Button();
             this.btnClearFilter = new System.Windows.Forms.Button();
@@ -148,28 +144,35 @@
             this.label13 = new System.Windows.Forms.Label();
             this.btnGroupRotate = new System.Windows.Forms.Button();
             this.txtRotation = new System.Windows.Forms.TextBox();
+            this.tabMirror = new System.Windows.Forms.TabPage();
+            this.chkMirrorRotate = new System.Windows.Forms.CheckBox();
+            this.btnMirror = new System.Windows.Forms.Button();
+            this.label19 = new System.Windows.Forms.Label();
+            this.cboMirrorPlane = new System.Windows.Forms.ComboBox();
+            this.tabOther = new System.Windows.Forms.TabPage();
+            this.btnClone = new System.Windows.Forms.Button();
+            this.btnManifest = new System.Windows.Forms.Button();
+            this.btnDeleteCrate = new System.Windows.Forms.Button();
             this.mnuShopping = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.mnuShopCSV = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuShopHTML = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuShopBoth = new System.Windows.Forms.ToolStripMenuItem();
-            this.tabMirror = new System.Windows.Forms.TabPage();
-            this.cboMirrorPlane = new System.Windows.Forms.ComboBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.btnMirror = new System.Windows.Forms.Button();
-            this.chkMirrorRotate = new System.Windows.Forms.CheckBox();
+            this.txtPlaneThick = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.ttThickness = new System.Windows.Forms.ToolTip(this.components);
             this.mnu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dg)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabCircleSpiral.SuspendLayout();
             this.tabTile.SuspendLayout();
             this.tabMove.SuspendLayout();
-            this.tabOther.SuspendLayout();
             this.tabGroups.SuspendLayout();
             this.tabRotate.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.mnuShopping.SuspendLayout();
             this.tabMirror.SuspendLayout();
+            this.tabOther.SuspendLayout();
+            this.mnuShopping.SuspendLayout();
             this.SuspendLayout();
             // 
             // mnu
@@ -388,7 +391,7 @@
             this.tabCircleSpiral.Location = new System.Drawing.Point(4, 40);
             this.tabCircleSpiral.Name = "tabCircleSpiral";
             this.tabCircleSpiral.Padding = new System.Windows.Forms.Padding(3);
-            this.tabCircleSpiral.Size = new System.Drawing.Size(223, 343);
+            this.tabCircleSpiral.Size = new System.Drawing.Size(223, 345);
             this.tabCircleSpiral.TabIndex = 0;
             this.tabCircleSpiral.Text = "Circle / Spiral";
             this.tabCircleSpiral.UseVisualStyleBackColor = true;
@@ -645,7 +648,7 @@
             this.tabTile.Location = new System.Drawing.Point(4, 40);
             this.tabTile.Name = "tabTile";
             this.tabTile.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTile.Size = new System.Drawing.Size(223, 343);
+            this.tabTile.Size = new System.Drawing.Size(223, 345);
             this.tabTile.TabIndex = 1;
             this.tabTile.Text = "Tile";
             this.tabTile.UseVisualStyleBackColor = true;
@@ -1036,48 +1039,6 @@
             this.btnNorth.UseVisualStyleBackColor = true;
             this.btnNorth.Click += new System.EventHandler(this.MassMove_Click);
             // 
-            // tabOther
-            // 
-            this.tabOther.Controls.Add(this.btnClone);
-            this.tabOther.Controls.Add(this.btnManifest);
-            this.tabOther.Controls.Add(this.btnDeleteCrate);
-            this.tabOther.Location = new System.Drawing.Point(4, 40);
-            this.tabOther.Name = "tabOther";
-            this.tabOther.Size = new System.Drawing.Size(223, 345);
-            this.tabOther.TabIndex = 2;
-            this.tabOther.Text = "Other";
-            this.tabOther.UseVisualStyleBackColor = true;
-            // 
-            // btnClone
-            // 
-            this.btnClone.Location = new System.Drawing.Point(47, 72);
-            this.btnClone.Name = "btnClone";
-            this.btnClone.Size = new System.Drawing.Size(126, 23);
-            this.btnClone.TabIndex = 2;
-            this.btnClone.Text = "Clone Item(s)";
-            this.btnClone.UseVisualStyleBackColor = true;
-            this.btnClone.Click += new System.EventHandler(this.btnClone_Click);
-            // 
-            // btnManifest
-            // 
-            this.btnManifest.Location = new System.Drawing.Point(47, 42);
-            this.btnManifest.Name = "btnManifest";
-            this.btnManifest.Size = new System.Drawing.Size(126, 23);
-            this.btnManifest.TabIndex = 1;
-            this.btnManifest.Text = "Make Shopping List";
-            this.btnManifest.UseVisualStyleBackColor = true;
-            this.btnManifest.Click += new System.EventHandler(this.btnManifest_Click);
-            // 
-            // btnDeleteCrate
-            // 
-            this.btnDeleteCrate.Location = new System.Drawing.Point(47, 12);
-            this.btnDeleteCrate.Name = "btnDeleteCrate";
-            this.btnDeleteCrate.Size = new System.Drawing.Size(126, 23);
-            this.btnDeleteCrate.TabIndex = 0;
-            this.btnDeleteCrate.Text = "Delete items in crate";
-            this.btnDeleteCrate.UseVisualStyleBackColor = true;
-            this.btnDeleteCrate.Click += new System.EventHandler(this.btnDeleteCrate_Click);
-            // 
             // tabGroups
             // 
             this.tabGroups.Controls.Add(this.btnRenameGroup);
@@ -1377,6 +1338,115 @@
             this.txtRotation.Text = "0";
             this.txtRotation.Leave += new System.EventHandler(this.NumberText_Leave);
             // 
+            // tabMirror
+            // 
+            this.tabMirror.Controls.Add(this.label23);
+            this.tabMirror.Controls.Add(this.txtPlaneThick);
+            this.tabMirror.Controls.Add(this.chkMirrorRotate);
+            this.tabMirror.Controls.Add(this.btnMirror);
+            this.tabMirror.Controls.Add(this.label19);
+            this.tabMirror.Controls.Add(this.cboMirrorPlane);
+            this.tabMirror.Location = new System.Drawing.Point(4, 40);
+            this.tabMirror.Name = "tabMirror";
+            this.tabMirror.Padding = new System.Windows.Forms.Padding(3);
+            this.tabMirror.Size = new System.Drawing.Size(223, 345);
+            this.tabMirror.TabIndex = 6;
+            this.tabMirror.Text = "Mirror";
+            this.tabMirror.UseVisualStyleBackColor = true;
+            // 
+            // chkMirrorRotate
+            // 
+            this.chkMirrorRotate.AutoSize = true;
+            this.chkMirrorRotate.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.chkMirrorRotate.Checked = true;
+            this.chkMirrorRotate.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkMirrorRotate.Location = new System.Drawing.Point(86, 109);
+            this.chkMirrorRotate.Name = "chkMirrorRotate";
+            this.chkMirrorRotate.Size = new System.Drawing.Size(131, 17);
+            this.chkMirrorRotate.TabIndex = 3;
+            this.chkMirrorRotate.Text = "Rotate Items on Plane";
+            this.chkMirrorRotate.UseVisualStyleBackColor = true;
+            // 
+            // btnMirror
+            // 
+            this.btnMirror.Location = new System.Drawing.Point(142, 132);
+            this.btnMirror.Name = "btnMirror";
+            this.btnMirror.Size = new System.Drawing.Size(75, 23);
+            this.btnMirror.TabIndex = 2;
+            this.btnMirror.Text = "Mirror!";
+            this.btnMirror.UseVisualStyleBackColor = true;
+            this.btnMirror.Click += new System.EventHandler(this.btnMirror_Click);
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(7, 4);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(77, 13);
+            this.label19.TabIndex = 1;
+            this.label19.Text = "Rotation Plane";
+            // 
+            // cboMirrorPlane
+            // 
+            this.cboMirrorPlane.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboMirrorPlane.FormattingEnabled = true;
+            this.cboMirrorPlane.Items.AddRange(new object[] {
+            "Z Plane (Ground)",
+            "- Mirror Items Upwards",
+            "- Mirror Items Downwards",
+            "X Plane (East/West)",
+            "- Mirror Items to East",
+            "- Mirror Items to West",
+            "Y Plane (North/South)",
+            "- Mirror Items North",
+            "- Mirror Items South"});
+            this.cboMirrorPlane.Location = new System.Drawing.Point(7, 22);
+            this.cboMirrorPlane.Name = "cboMirrorPlane";
+            this.cboMirrorPlane.Size = new System.Drawing.Size(210, 21);
+            this.cboMirrorPlane.TabIndex = 0;
+            // 
+            // tabOther
+            // 
+            this.tabOther.Controls.Add(this.btnClone);
+            this.tabOther.Controls.Add(this.btnManifest);
+            this.tabOther.Controls.Add(this.btnDeleteCrate);
+            this.tabOther.Location = new System.Drawing.Point(4, 40);
+            this.tabOther.Name = "tabOther";
+            this.tabOther.Size = new System.Drawing.Size(223, 345);
+            this.tabOther.TabIndex = 2;
+            this.tabOther.Text = "Other";
+            this.tabOther.UseVisualStyleBackColor = true;
+            // 
+            // btnClone
+            // 
+            this.btnClone.Location = new System.Drawing.Point(47, 72);
+            this.btnClone.Name = "btnClone";
+            this.btnClone.Size = new System.Drawing.Size(126, 23);
+            this.btnClone.TabIndex = 2;
+            this.btnClone.Text = "Clone Item(s)";
+            this.btnClone.UseVisualStyleBackColor = true;
+            this.btnClone.Click += new System.EventHandler(this.btnClone_Click);
+            // 
+            // btnManifest
+            // 
+            this.btnManifest.Location = new System.Drawing.Point(47, 42);
+            this.btnManifest.Name = "btnManifest";
+            this.btnManifest.Size = new System.Drawing.Size(126, 23);
+            this.btnManifest.TabIndex = 1;
+            this.btnManifest.Text = "Make Shopping List";
+            this.btnManifest.UseVisualStyleBackColor = true;
+            this.btnManifest.Click += new System.EventHandler(this.btnManifest_Click);
+            // 
+            // btnDeleteCrate
+            // 
+            this.btnDeleteCrate.Location = new System.Drawing.Point(47, 12);
+            this.btnDeleteCrate.Name = "btnDeleteCrate";
+            this.btnDeleteCrate.Size = new System.Drawing.Size(126, 23);
+            this.btnDeleteCrate.TabIndex = 0;
+            this.btnDeleteCrate.Text = "Delete items in crate";
+            this.btnDeleteCrate.UseVisualStyleBackColor = true;
+            this.btnDeleteCrate.Click += new System.EventHandler(this.btnDeleteCrate_Click);
+            // 
             // mnuShopping
             // 
             this.mnuShopping.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -1407,70 +1477,27 @@
             this.mnuShopBoth.Text = "Generate CSV and HTML";
             this.mnuShopBoth.Click += new System.EventHandler(this.mnuShopping_ItemClick);
             // 
-            // tabMirror
+            // txtPlaneThick
             // 
-            this.tabMirror.Controls.Add(this.chkMirrorRotate);
-            this.tabMirror.Controls.Add(this.btnMirror);
-            this.tabMirror.Controls.Add(this.label19);
-            this.tabMirror.Controls.Add(this.cboMirrorPlane);
-            this.tabMirror.Location = new System.Drawing.Point(4, 40);
-            this.tabMirror.Name = "tabMirror";
-            this.tabMirror.Padding = new System.Windows.Forms.Padding(3);
-            this.tabMirror.Size = new System.Drawing.Size(223, 345);
-            this.tabMirror.TabIndex = 6;
-            this.tabMirror.Text = "Mirror";
-            this.tabMirror.UseVisualStyleBackColor = true;
+            this.txtPlaneThick.Location = new System.Drawing.Point(168, 50);
+            this.txtPlaneThick.Name = "txtPlaneThick";
+            this.txtPlaneThick.Size = new System.Drawing.Size(48, 20);
+            this.txtPlaneThick.TabIndex = 4;
+            this.txtPlaneThick.Text = "1";
+            this.txtPlaneThick.Leave += new System.EventHandler(this.NumberText_Leave);
             // 
-            // cboMirrorPlane
+            // label23
             // 
-            this.cboMirrorPlane.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboMirrorPlane.FormattingEnabled = true;
-            this.cboMirrorPlane.Items.AddRange(new object[] {
-            "Z Plane (Ground)",
-            "- Mirror Items Upwards",
-            "- Mirror Items Downwards",
-            "X Plane (East/West)",
-            "- Mirror Items to East",
-            "- Mirror Items to West",
-            "Y Plane (North/South)",
-            "- Mirror Items North",
-            "- Mirror Items South"});
-            this.cboMirrorPlane.Location = new System.Drawing.Point(7, 22);
-            this.cboMirrorPlane.Name = "cboMirrorPlane";
-            this.cboMirrorPlane.Size = new System.Drawing.Size(210, 21);
-            this.cboMirrorPlane.TabIndex = 0;
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(76, 53);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(86, 13);
+            this.label23.TabIndex = 5;
+            this.label23.Text = "Plane Thickness";
             // 
-            // label19
+            // ttThickness
             // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(7, 4);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(77, 13);
-            this.label19.TabIndex = 1;
-            this.label19.Text = "Rotation Plane";
-            // 
-            // btnMirror
-            // 
-            this.btnMirror.Location = new System.Drawing.Point(142, 72);
-            this.btnMirror.Name = "btnMirror";
-            this.btnMirror.Size = new System.Drawing.Size(75, 23);
-            this.btnMirror.TabIndex = 2;
-            this.btnMirror.Text = "Mirror!";
-            this.btnMirror.UseVisualStyleBackColor = true;
-            this.btnMirror.Click += new System.EventHandler(this.btnMirror_Click);
-            // 
-            // chkMirrorRotate
-            // 
-            this.chkMirrorRotate.AutoSize = true;
-            this.chkMirrorRotate.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chkMirrorRotate.Checked = true;
-            this.chkMirrorRotate.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkMirrorRotate.Location = new System.Drawing.Point(86, 49);
-            this.chkMirrorRotate.Name = "chkMirrorRotate";
-            this.chkMirrorRotate.Size = new System.Drawing.Size(131, 17);
-            this.chkMirrorRotate.TabIndex = 3;
-            this.chkMirrorRotate.Text = "Rotate Items on Plane";
-            this.chkMirrorRotate.UseVisualStyleBackColor = true;
+            this.ttThickness.IsBalloon = true;
             // 
             // Form1
             // 
@@ -1499,7 +1526,6 @@
             this.tabTile.PerformLayout();
             this.tabMove.ResumeLayout(false);
             this.tabMove.PerformLayout();
-            this.tabOther.ResumeLayout(false);
             this.tabGroups.ResumeLayout(false);
             this.tabGroups.PerformLayout();
             this.tabRotate.ResumeLayout(false);
@@ -1508,9 +1534,10 @@
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.mnuShopping.ResumeLayout(false);
             this.tabMirror.ResumeLayout(false);
             this.tabMirror.PerformLayout();
+            this.tabOther.ResumeLayout(false);
+            this.mnuShopping.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1645,6 +1672,9 @@
         private System.Windows.Forms.ComboBox cboMirrorPlane;
         private System.Windows.Forms.Button btnMirror;
         private System.Windows.Forms.CheckBox chkMirrorRotate;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.TextBox txtPlaneThick;
+        private System.Windows.Forms.ToolTip ttThickness;
     }
 }
 
