@@ -145,6 +145,8 @@
             this.btnGroupRotate = new System.Windows.Forms.Button();
             this.txtRotation = new System.Windows.Forms.TextBox();
             this.tabMirror = new System.Windows.Forms.TabPage();
+            this.label23 = new System.Windows.Forms.Label();
+            this.txtPlaneThick = new System.Windows.Forms.TextBox();
             this.chkMirrorRotate = new System.Windows.Forms.CheckBox();
             this.btnMirror = new System.Windows.Forms.Button();
             this.label19 = new System.Windows.Forms.Label();
@@ -157,9 +159,8 @@
             this.mnuShopCSV = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuShopHTML = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuShopBoth = new System.Windows.Forms.ToolStripMenuItem();
-            this.txtPlaneThick = new System.Windows.Forms.TextBox();
-            this.label23 = new System.Windows.Forms.Label();
             this.ttThickness = new System.Windows.Forms.ToolTip(this.components);
+            this.chkMirrorCrate = new System.Windows.Forms.CheckBox();
             this.mnu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dg)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -1340,6 +1341,7 @@
             // 
             // tabMirror
             // 
+            this.tabMirror.Controls.Add(this.chkMirrorCrate);
             this.tabMirror.Controls.Add(this.label23);
             this.tabMirror.Controls.Add(this.txtPlaneThick);
             this.tabMirror.Controls.Add(this.chkMirrorRotate);
@@ -1353,6 +1355,24 @@
             this.tabMirror.TabIndex = 6;
             this.tabMirror.Text = "Mirror";
             this.tabMirror.UseVisualStyleBackColor = true;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(76, 53);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(86, 13);
+            this.label23.TabIndex = 5;
+            this.label23.Text = "Plane Thickness";
+            // 
+            // txtPlaneThick
+            // 
+            this.txtPlaneThick.Location = new System.Drawing.Point(168, 50);
+            this.txtPlaneThick.Name = "txtPlaneThick";
+            this.txtPlaneThick.Size = new System.Drawing.Size(48, 20);
+            this.txtPlaneThick.TabIndex = 4;
+            this.txtPlaneThick.Text = "1";
+            this.txtPlaneThick.Leave += new System.EventHandler(this.NumberText_Leave);
             // 
             // chkMirrorRotate
             // 
@@ -1369,7 +1389,7 @@
             // 
             // btnMirror
             // 
-            this.btnMirror.Location = new System.Drawing.Point(142, 132);
+            this.btnMirror.Location = new System.Drawing.Point(141, 155);
             this.btnMirror.Name = "btnMirror";
             this.btnMirror.Size = new System.Drawing.Size(75, 23);
             this.btnMirror.TabIndex = 2;
@@ -1477,27 +1497,20 @@
             this.mnuShopBoth.Text = "Generate CSV and HTML";
             this.mnuShopBoth.Click += new System.EventHandler(this.mnuShopping_ItemClick);
             // 
-            // txtPlaneThick
-            // 
-            this.txtPlaneThick.Location = new System.Drawing.Point(168, 50);
-            this.txtPlaneThick.Name = "txtPlaneThick";
-            this.txtPlaneThick.Size = new System.Drawing.Size(48, 20);
-            this.txtPlaneThick.TabIndex = 4;
-            this.txtPlaneThick.Text = "1";
-            this.txtPlaneThick.Leave += new System.EventHandler(this.NumberText_Leave);
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(76, 53);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(86, 13);
-            this.label23.TabIndex = 5;
-            this.label23.Text = "Plane Thickness";
-            // 
             // ttThickness
             // 
             this.ttThickness.IsBalloon = true;
+            // 
+            // chkMirrorCrate
+            // 
+            this.chkMirrorCrate.AutoSize = true;
+            this.chkMirrorCrate.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.chkMirrorCrate.Location = new System.Drawing.Point(99, 132);
+            this.chkMirrorCrate.Name = "chkMirrorCrate";
+            this.chkMirrorCrate.Size = new System.Drawing.Size(117, 17);
+            this.chkMirrorCrate.TabIndex = 6;
+            this.chkMirrorCrate.Text = "Use Crate vs Clone";
+            this.chkMirrorCrate.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -1675,6 +1688,7 @@
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.TextBox txtPlaneThick;
         private System.Windows.Forms.ToolTip ttThickness;
+        private System.Windows.Forms.CheckBox chkMirrorCrate;
     }
 }
 

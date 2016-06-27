@@ -705,10 +705,11 @@ namespace LayoutEdit
             }
             decimal PlaneThickness = Decimal.Parse(txtPlaneThick.Text);
             Placement.HouseItem[] Items = SelectedGridToItems();
+            List<Placement.HouseItem> MissingCrate = new List<Placement.HouseItem>();
             decimal anchorpoint = 0;
             bool anchorset = false, rotate = chkMirrorRotate.Checked;
             decimal modifier = 1;
-            // Find the anchor point that will be the "Mirror" plane. 
+            // Find the anchor point that will be the "Mirror" plane.
             foreach (Placement.HouseItem Item in Items)
             {
                 switch (cboMirrorPlane.SelectedIndex)
@@ -745,8 +746,20 @@ namespace LayoutEdit
             // Mirror the items on the anchor
             for (int ItemNbr = 0; ItemNbr < Items.Length; ItemNbr++)
             {
-                // Clone the item
-                DataRow DR = layout.HouseItems.NewRow();
+                // Kick the item out of the crate if it's in crate.
+                if (Items[ItemNbr].InCrate) Items[ItemNbr].InCrate = false;
+                bool UseExistingRow = false;
+                DataRow DR = null;
+                if (chkMirrorCrate.Checked && layout.FindCrateItem(Items[ItemNbr].ItemID) != null)
+                { // Use Existing Item
+                    DR = layout.FindCrateItem(Items[ItemNbr].ItemID);
+                    UseExistingRow = true;
+                }
+                else 
+                { // Clone the item
+                    MissingCrate.Add(Items[ItemNbr]);
+                    DR = layout.HouseItems.NewRow(); 
+                }
                 
                 DR["InCrate"] = Items[ItemNbr].InCrate;
                 DR["ItemID"] = Items[ItemNbr].ItemID;
@@ -783,15 +796,39 @@ namespace LayoutEdit
                 }
                 
             mirrorPreAdd:
-                DR["DatabaseID"] = ClonedHouseItemDBId;
-                ClonedHouseItemDBId--;
-                try 
-                { 
-                    layout.HouseItems.Rows.Add(DR);
-                }
-                catch
+                if (!UseExistingRow)
                 {
-                    goto mirrorPreAdd;
+                    DR["DatabaseID"] = ClonedHouseItemDBId;
+                    ClonedHouseItemDBId--;
+                    try
+                    {
+                        layout.HouseItems.Rows.Add(DR);
+                    }
+                    catch
+                    {
+                        goto mirrorPreAdd;
+                    }
+                }
+                else { DR["InCrate"] = false; }
+            }
+            if (chkMirrorCrate.Checked && MissingCrate.Count > 0)
+            {
+                DialogResult pr_missing = MessageBox.Show(this, "You had checked that you wanted to use items from the crate vs cloning. " + MissingCrate.Count.ToString() + " item(s) were not found in the crate.\r\n\r\nWould you like to see these items?", "Missing Items", MessageBoxButtons.YesNo);
+                if (DialogResult.Yes == pr_missing)
+                {
+                    LayoutFile LayoutMissing = new LayoutFile();
+                    LayoutMissing.FileName = layout.FileName;
+                    LayoutMissing.HouseItems.Clear();
+                    LayoutMissing.ItemstoDB(MissingCrate.ToArray());
+                    LayoutMissing.SaveFile(layout.FileName +
+                        "_mirrored_items_missing_" +
+                        DateTime.Now.Year.ToString() + DateTime.Now.Month.ToString("00") + DateTime.Now.Day.ToString("00") +
+                        DateTime.Now.Hour.ToString("00") + DateTime.Now.Minute.ToString("00") + DateTime.Now.Second.ToString("00"));
+                    LayoutMissing.ManifestGenerate(false, true);
+                    string HTMLOutPath = LayoutMissing.FileName + ".html";
+                    pr_missing = MessageBox.Show(this, "An HTML manifest generated of the missing items. This will be opened after this dialog.\r\n\r\nLayout editor has also created a layout file of just what couldn't be replicated. Do you want to keep this new layout file for reference?", "Missing Items", MessageBoxButtons.YesNo);
+                    if (pr_missing == DialogResult.No) File.Delete(LayoutMissing.FileName);
+                    System.Diagnostics.Process.Start(HTMLOutPath);
                 }
             }
         }

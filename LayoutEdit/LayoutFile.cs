@@ -233,6 +233,7 @@ namespace LayoutEdit
         {
             foreach (Placement.HouseItem Item in Items)
             {
+                bool ItemFound = false;
                 foreach (DataRow dr in HouseItems.Rows)
                 {
                     if ((int)dr["DatabaseID"] == Item.DatabaseID)
@@ -249,8 +250,26 @@ namespace LayoutEdit
                         dr["InCrate"] = Item.InCrate;
                         dr["ItemName"] = Item.ItemName;
                         dr["Memo"] = Item.Memo;
+                        ItemFound = true;
                         break;
                     }
+                }
+                if (!ItemFound)
+                {
+                    DataRow dr_add = HouseItems.NewRow();
+                    dr_add["ItemID"] = Item.ItemID;
+                    dr_add["DatabaseID"] = Item.DatabaseID;
+                    dr_add["x"] = Item.x;
+                    dr_add["z"] = Item.z;
+                    dr_add["y"] = Item.y;
+                    dr_add["Rotation"] = Item.Rotation;
+                    dr_add["Pitch"] = Item.Pitch;
+                    dr_add["Roll"] = Item.Roll;
+                    dr_add["Scale"] = Item.Scale;
+                    dr_add["InCrate"] = Item.InCrate;
+                    dr_add["ItemName"] = Item.ItemName;
+                    dr_add["Memo"] = Item.Memo;
+                    HouseItems.Rows.Add(dr_add);
                 }
             }
         }
@@ -347,6 +366,17 @@ namespace LayoutEdit
                     break;
                 }
             }
+        }
+        internal DataRow FindCrateItem(Int64 ItemID)
+        {
+            foreach (DataRow dr in HouseItems.Rows)
+            {
+                if (Int64.Parse(dr["ItemId"].ToString()) == ItemID && bool.Parse(dr["InCrate"].ToString()) == true)
+                { 
+                    return dr;
+                }
+            }
+            return null;
         }
     }
 }
