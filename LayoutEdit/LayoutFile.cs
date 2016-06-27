@@ -85,7 +85,12 @@ namespace LayoutEdit
                 _houseversion = Int64.Parse(_input.Split(',')[0]);
 
                 _input = sr.ReadLine();
-                _houseid = Int64.Parse(_input.Split(',')[0]);
+                try
+                {
+                    _houseid = Int64.Parse(_input.Split(',')[0]);
+                } catch (System.FormatException fe) {
+                    _houseid = Int64.Parse(_input.Split(',')[0], System.Globalization.NumberStyles.HexNumber);
+                }
             }
             else
             {
@@ -372,7 +377,7 @@ namespace LayoutEdit
             foreach (DataRow dr in HouseItems.Rows)
             {
                 if (Int64.Parse(dr["ItemId"].ToString()) == ItemID && bool.Parse(dr["InCrate"].ToString()) == true)
-                { 
+                {
                     return dr;
                 }
             }
