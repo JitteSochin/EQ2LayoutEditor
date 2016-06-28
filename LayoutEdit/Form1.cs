@@ -16,6 +16,7 @@ namespace LayoutEdit
         LayoutFile layout = new LayoutFile();
         Dial Percentage = new Dial();
         Dial Fill = new Dial();
+        frmChart Chart = new frmChart();
         private Int64 ClonedHouseItemDBId = 99999999;
         public Form1()
         {
@@ -41,6 +42,7 @@ namespace LayoutEdit
             {
                 cboGroups.Items.Add(grp.Name);
             }
+            if (Chart.Visible) Chart.FirstBuild(layout.HouseItems);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -158,6 +160,7 @@ namespace LayoutEdit
             Items = Placement.CirclePlane(Items, CenterPoint, Orientation, Radius, Facing, double.Parse(txtEndZ.Text),
                 Reverse, FillPerc, chkRotate.Checked, StartingPoint, chk90Offset.Checked, Spiral, sVertical, double.Parse(txtRevolutions.Text), chkPointTops.Checked);
             layout.ItemstoDB(Items);
+            if (Chart.Visible) Chart.Redraw();
         }
        
         private Placement.HouseItem[] SelectedGridToItems()
@@ -218,6 +221,7 @@ namespace LayoutEdit
             Placement.HouseItem[] Items = SelectedGridToItems();
             Items = Placement.Tile(Items, v3, xSpacing, ySpacing, zSpacing, xUnits, yUnits, zUnits, Scaling, chkIgnoreScaling.Checked, chkZeroRotation.Checked);
             layout.ItemstoDB(Items);
+            if (Chart.Visible) Chart.Redraw();
         }
 
         private void NumberText_Leave(object sender, EventArgs e)
@@ -376,6 +380,7 @@ namespace LayoutEdit
                         break;
                 }
             }
+            if (Chart.Visible) Chart.Redraw();
         }
 
         private void saveChangesOnlyAsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -694,6 +699,7 @@ namespace LayoutEdit
             bool RotateAroundPoint = (rdoCenter.Checked) ? false : true;
             Items = Placement.RotateGroup(Items, rotation, ra, CtrPt, RotateAroundPoint);
             layout.ItemstoDB(Items);
+            if (Chart.Visible) Chart.Redraw();
         }
 
         private void btnMirror_Click(object sender, EventArgs e)
@@ -831,6 +837,20 @@ namespace LayoutEdit
                     System.Diagnostics.Process.Start(HTMLOutPath);
                 }
             }
+            if (Chart.Visible) Chart.Redraw();
+        }
+
+        private void visualizeLayoutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Chart.IsDisposed) Chart = new frmChart();
+            Chart.Text = "Viewing " + layout.FileName;
+            Chart.FirstBuild(layout.HouseItems);
+            Chart.Show();
+        }
+
+        private void dg_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if(Chart.Visible) Chart.Redraw();
         }
     }
 }

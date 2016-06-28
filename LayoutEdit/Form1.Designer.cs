@@ -46,6 +46,8 @@
             this.crateItemsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.clearSortingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
+            this.visualizeLayoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dg = new System.Windows.Forms.DataGridView();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -145,6 +147,7 @@
             this.btnGroupRotate = new System.Windows.Forms.Button();
             this.txtRotation = new System.Windows.Forms.TextBox();
             this.tabMirror = new System.Windows.Forms.TabPage();
+            this.chkMirrorCrate = new System.Windows.Forms.CheckBox();
             this.label23 = new System.Windows.Forms.Label();
             this.txtPlaneThick = new System.Windows.Forms.TextBox();
             this.chkMirrorRotate = new System.Windows.Forms.CheckBox();
@@ -160,7 +163,6 @@
             this.mnuShopHTML = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuShopBoth = new System.Windows.Forms.ToolStripMenuItem();
             this.ttThickness = new System.Windows.Forms.ToolTip(this.components);
-            this.chkMirrorCrate = new System.Windows.Forms.CheckBox();
             this.mnu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dg)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -266,7 +268,9 @@
             this.allItemsToolStripMenuItem,
             this.crateItemsToolStripMenuItem,
             this.toolStripMenuItem1,
-            this.clearSortingToolStripMenuItem});
+            this.clearSortingToolStripMenuItem,
+            this.toolStripMenuItem3,
+            this.visualizeLayoutToolStripMenuItem});
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
             this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.viewToolStripMenuItem.Text = "&View";
@@ -276,28 +280,40 @@
             this.allItemsToolStripMenuItem.Checked = true;
             this.allItemsToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.allItemsToolStripMenuItem.Name = "allItemsToolStripMenuItem";
-            this.allItemsToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.allItemsToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.allItemsToolStripMenuItem.Text = "&All Items";
             this.allItemsToolStripMenuItem.Click += new System.EventHandler(this.allItemsToolStripMenuItem_Click);
             // 
             // crateItemsToolStripMenuItem
             // 
             this.crateItemsToolStripMenuItem.Name = "crateItemsToolStripMenuItem";
-            this.crateItemsToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.crateItemsToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.crateItemsToolStripMenuItem.Text = "&Crate Items";
             this.crateItemsToolStripMenuItem.Click += new System.EventHandler(this.crateItemsToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(139, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(155, 6);
             // 
             // clearSortingToolStripMenuItem
             // 
             this.clearSortingToolStripMenuItem.Name = "clearSortingToolStripMenuItem";
-            this.clearSortingToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.clearSortingToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.clearSortingToolStripMenuItem.Text = "Clear Sorting";
             this.clearSortingToolStripMenuItem.Click += new System.EventHandler(this.clearSortingToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(155, 6);
+            // 
+            // visualizeLayoutToolStripMenuItem
+            // 
+            this.visualizeLayoutToolStripMenuItem.Name = "visualizeLayoutToolStripMenuItem";
+            this.visualizeLayoutToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.visualizeLayoutToolStripMenuItem.Text = "Visualize Layout";
+            this.visualizeLayoutToolStripMenuItem.Click += new System.EventHandler(this.visualizeLayoutToolStripMenuItem_Click);
             // 
             // dg
             // 
@@ -309,6 +325,7 @@
             this.dg.Name = "dg";
             this.dg.Size = new System.Drawing.Size(557, 450);
             this.dg.TabIndex = 1;
+            this.dg.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_CellEndEdit);
             this.dg.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_CellValueChanged);
             this.dg.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dg_RowsAdded);
             this.dg.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dg_RowsRemoved);
@@ -1356,6 +1373,17 @@
             this.tabMirror.Text = "Mirror";
             this.tabMirror.UseVisualStyleBackColor = true;
             // 
+            // chkMirrorCrate
+            // 
+            this.chkMirrorCrate.AutoSize = true;
+            this.chkMirrorCrate.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.chkMirrorCrate.Location = new System.Drawing.Point(99, 132);
+            this.chkMirrorCrate.Name = "chkMirrorCrate";
+            this.chkMirrorCrate.Size = new System.Drawing.Size(117, 17);
+            this.chkMirrorCrate.TabIndex = 6;
+            this.chkMirrorCrate.Text = "Use Crate vs Clone";
+            this.chkMirrorCrate.UseVisualStyleBackColor = true;
+            // 
             // label23
             // 
             this.label23.AutoSize = true;
@@ -1500,17 +1528,6 @@
             // ttThickness
             // 
             this.ttThickness.IsBalloon = true;
-            // 
-            // chkMirrorCrate
-            // 
-            this.chkMirrorCrate.AutoSize = true;
-            this.chkMirrorCrate.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chkMirrorCrate.Location = new System.Drawing.Point(99, 132);
-            this.chkMirrorCrate.Name = "chkMirrorCrate";
-            this.chkMirrorCrate.Size = new System.Drawing.Size(117, 17);
-            this.chkMirrorCrate.TabIndex = 6;
-            this.chkMirrorCrate.Text = "Use Crate vs Clone";
-            this.chkMirrorCrate.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -1689,6 +1706,8 @@
         private System.Windows.Forms.TextBox txtPlaneThick;
         private System.Windows.Forms.ToolTip ttThickness;
         private System.Windows.Forms.CheckBox chkMirrorCrate;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem visualizeLayoutToolStripMenuItem;
     }
 }
 
