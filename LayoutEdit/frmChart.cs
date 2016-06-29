@@ -75,7 +75,7 @@ namespace LayoutEdit
                 }
                 chart.Series["xy"].Points.AddXY(Itemx, Itemy);
                 chart.Series["xy"].Points[pointindex].Color = Color.FromArgb(rInt, gInt, 0);
-                chart.Series["xy"].Points[pointindex].ToolTip = String.Format("{0} [{1}]", Item["ItemName"].ToString(), Item["ItemID"].ToString());
+                chart.Series["xy"].Points[pointindex].ToolTip = String.Format("{0} [{1}]", Item["ItemName"].ToString(), Item["DatabaseID"].ToString());
                 pointindex++;
             }
             chart.ChartAreas["ChartArea"].AxisX.Minimum = -(int)(((double)MaxX - (double)MinX) * 0.1d);
@@ -152,7 +152,7 @@ namespace LayoutEdit
                 {
                     chart.Series["xy"].Points.AddXY(Itemx, Itemy);
                     chart.Series["xy"].Points[pointindex].Color = Color.FromArgb(rInt, gInt, 0);
-                    chart.Series["xy"].Points[pointindex].ToolTip = String.Format("{0} [{1}]", Item["ItemName"].ToString(), Item["ItemID"].ToString());
+                    chart.Series["xy"].Points[pointindex].ToolTip = String.Format("{0} [{1}]", Item["ItemName"].ToString(), Item["DatabaseID"].ToString());
                     pointindex++;
                 }
             }
