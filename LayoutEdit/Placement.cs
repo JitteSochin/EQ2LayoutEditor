@@ -51,7 +51,8 @@ namespace LayoutEdit
         /// <param name="Items">Items to include</param>
         /// <param name="CenterPoint">X Y Z Center Point of circle</param>
         /// <param name="Orientation">0 for horizontal, 1 for vertical</param>
-        /// <param name="Radius">Radius</param>
+        /// <param name="RadiusX">X Radius</param>
+        /// <param name="RadiusY">Y RAdius</param>
         /// <param name="Facing">0 for item on North/South wall, 1 for East/West (Vertical Placement only)</param>
         /// <param name="Direction">Direction to draw (Use Reverse for best results)</param>
         /// <param name="Percentage">How much of the circle to draw</param>
@@ -66,7 +67,8 @@ namespace LayoutEdit
         internal static HouseItem[] CirclePlane(HouseItem[] Items, 
             Vector3D CenterPoint
             , int Orientation 
-            , double Radius
+            , double RadiusX
+            , double RadiusY
             , int Facing
             , double EndZ
             , DirectionType Direction = DirectionType.Reverse
@@ -88,25 +90,26 @@ namespace LayoutEdit
             } else {
                 Arc = 2d * Math.PI / ((double)Items.Count() / Revolutions);
             }
-            double X, Y, SD, zStep;
+            double X = 0, Y = 0, SD, zStep;
             for (int i = 0; Math.Abs(i) < Items.Count(); i += (int)Direction)
             {
+                SD = StartDegree / 359 * Items.Count() * (double)Direction;
                 if (Spiral && !VertSpiral)
                 {
-                    uRadius = (double)Math.Abs(i) / (double)Items.Count() * Radius;
+                    uRadius = (double)Math.Abs(i) / (double)Items.Count() * RadiusX;
+                    X = uRadius * Math.Cos(Arc * (Percentage * (i + SD)));
+                    Y = uRadius * Math.Sin(Arc * (Percentage * (i + SD)));
                 }
                 else
                 {
-                    uRadius = Radius;
+                    X = RadiusX * Math.Cos(Arc * (Percentage * (i + SD)));
+                    Y = RadiusY * Math.Sin(Arc * (Percentage * (i + SD)));
                 }
                 if (Spiral && VertSpiral)
                 {
                     zStep = (EndZ - CenterPoint.Z) / (double)Items.Count();
                 }
                 else { zStep = 0; }
-                SD = StartDegree / 359 * Items.Count() * (double)Direction;
-                X = uRadius * Math.Cos(Arc * (Percentage * (i + SD)));
-                Y = uRadius * Math.Sin(Arc * (Percentage * (i + SD)));
                 double Rotation;
                 Items[Math.Abs(i)].x = (decimal)CenterPoint.X;
                 Items[Math.Abs(i)].y = (decimal)CenterPoint.Y;

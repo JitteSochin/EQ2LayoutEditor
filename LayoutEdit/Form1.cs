@@ -151,13 +151,14 @@ namespace LayoutEdit
                 , double.Parse(txtCirCentZ.Text));
             int StartingPoint = Percentage.Value;
             double FillPerc = (double)Fill.Value / 359d;
-            double Radius = double.Parse(txtRadius.Text);
+            double RadiusX = double.Parse(txtRadiusX.Text);
+            double RadiusY = double.Parse(txtRadiusY.Text);
             Placement.DirectionType Reverse = (chkReverse.Checked) ? Placement.DirectionType.Reverse : Placement.DirectionType.Forward;
             int Orientation = (cboCirclePlane.SelectedIndex != 0) ? 1 : 0;
             int Facing = (cboCirclePlane.SelectedIndex == 1) ? 1 : 0;
             bool sVertical = rdo_From_Ground.Checked ;
             bool Spiral = chkSpiral.Checked;
-            Items = Placement.CirclePlane(Items, CenterPoint, Orientation, Radius, Facing, double.Parse(txtEndZ.Text),
+            Items = Placement.CirclePlane(Items, CenterPoint, Orientation, RadiusX, RadiusY, Facing, double.Parse(txtEndZ.Text),
                 Reverse, FillPerc, chkRotate.Checked, StartingPoint, chk90Offset.Checked, Spiral, sVertical, double.Parse(txtRevolutions.Text), chkPointTops.Checked);
             layout.ItemstoDB(Items);
             if (Chart.Visible) Chart.Redraw();
@@ -231,11 +232,16 @@ namespace LayoutEdit
             if (!decimal.TryParse(Sender.Text, out throwaway)){
                 MessageBox.Show("This field needs to be numerical. Please enter a valid value");
                 Sender.Focus();
+                return;
             }
             if (Sender.Name == "txtSpaceX" && chkSpaceLink.Checked)
             {
                 txtSpaceY.Text = txtSpaceX.Text;
                 txtSpaceZ.Text = txtSpaceX.Text;
+            }
+            if (Sender.Name == "txtRadiusX" && chkRadiusSync.Checked) 
+            {
+                txtRadiusY.Text = txtRadiusX.Text;
             }
         }
 
@@ -851,6 +857,11 @@ namespace LayoutEdit
         private void dg_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             if(Chart.Visible) Chart.Redraw();
+        }
+
+        private void chkRadiusSync_CheckedChanged(object sender, EventArgs e)
+        {
+            txtRadiusY.Enabled = !chkRadiusSync.Checked;
         }
     }
 }
