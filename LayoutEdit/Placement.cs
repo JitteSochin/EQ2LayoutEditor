@@ -66,9 +66,9 @@ namespace LayoutEdit
         /// <param name="TopPoint">Point the top of items at the center of the circle (Vertical Circle)</param>
         internal static HouseItem[] CirclePlane(HouseItem[] Items, 
             Vector3D CenterPoint
-            , int Orientation 
-            , double RadiusX
+            , int Orientation
             , double RadiusY
+            , double RadiusX
             , int Facing
             , double EndZ
             , DirectionType Direction = DirectionType.Reverse

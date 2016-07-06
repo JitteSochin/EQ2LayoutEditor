@@ -151,8 +151,8 @@ namespace LayoutEdit
                 , double.Parse(txtCirCentZ.Text));
             int StartingPoint = Percentage.Value;
             double FillPerc = (double)Fill.Value / 359d;
-            double RadiusX = double.Parse(txtRadiusX.Text);
-            double RadiusY = double.Parse(txtRadiusY.Text);
+            double RadiusX = double.Parse(txtRadiusLeft.Text);
+            double RadiusY = double.Parse(txtRadiusRight.Text);
             Placement.DirectionType Reverse = (chkReverse.Checked) ? Placement.DirectionType.Reverse : Placement.DirectionType.Forward;
             int Orientation = (cboCirclePlane.SelectedIndex != 0) ? 1 : 0;
             int Facing = (cboCirclePlane.SelectedIndex == 1) ? 1 : 0;
@@ -241,7 +241,7 @@ namespace LayoutEdit
             }
             if (Sender.Name == "txtRadiusX" && chkRadiusSync.Checked) 
             {
-                txtRadiusY.Text = txtRadiusX.Text;
+                txtRadiusRight.Text = txtRadiusLeft.Text;
             }
         }
 
@@ -861,7 +861,28 @@ namespace LayoutEdit
 
         private void chkRadiusSync_CheckedChanged(object sender, EventArgs e)
         {
-            txtRadiusY.Enabled = !chkRadiusSync.Checked;
+            txtRadiusRight.Enabled = !chkRadiusSync.Checked;
+        }
+
+        private void cboCirclePlane_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string xRad = "X Radius"
+                    , yRad = "Y Radius"
+                    , zRad = "Z Radius";
+            switch (cboCirclePlane.SelectedIndex){
+                case 0: // Z Plane
+                    lblRadLeft.Text = xRad;
+                    lblRadRight.Text = yRad;
+                    break;
+                case 1: // X Plane
+                    lblRadLeft.Text = zRad;
+                    lblRadRight.Text = yRad;
+                    break;
+                case 2: // Y Plane
+                    lblRadLeft.Text = zRad;
+                    lblRadRight.Text = xRad;
+                    break;
+            }
         }
     }
 }

@@ -55,6 +55,9 @@
             this.sd = new System.Windows.Forms.SaveFileDialog();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabCircleSpiral = new System.Windows.Forms.TabPage();
+            this.chkRadiusSync = new System.Windows.Forms.CheckBox();
+            this.txtRadiusRight = new System.Windows.Forms.TextBox();
+            this.lblRadLeft = new System.Windows.Forms.Label();
             this.cboCirclePlane = new System.Windows.Forms.ComboBox();
             this.chkPointTops = new System.Windows.Forms.CheckBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -67,8 +70,8 @@
             this.chk90Offset = new System.Windows.Forms.CheckBox();
             this.chkRotate = new System.Windows.Forms.CheckBox();
             this.btnCircle = new System.Windows.Forms.Button();
-            this.txtRadiusX = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.txtRadiusLeft = new System.Windows.Forms.TextBox();
+            this.lblRadRight = new System.Windows.Forms.Label();
             this.chkReverse = new System.Windows.Forms.CheckBox();
             this.lbl_Fill = new System.Windows.Forms.Label();
             this.lbl_off = new System.Windows.Forms.Label();
@@ -163,9 +166,6 @@
             this.mnuShopHTML = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuShopBoth = new System.Windows.Forms.ToolStripMenuItem();
             this.ttThickness = new System.Windows.Forms.ToolTip(this.components);
-            this.txtRadiusY = new System.Windows.Forms.TextBox();
-            this.label24 = new System.Windows.Forms.Label();
-            this.chkRadiusSync = new System.Windows.Forms.CheckBox();
             this.mnu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dg)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -387,8 +387,8 @@
             // tabCircleSpiral
             // 
             this.tabCircleSpiral.Controls.Add(this.chkRadiusSync);
-            this.tabCircleSpiral.Controls.Add(this.txtRadiusY);
-            this.tabCircleSpiral.Controls.Add(this.label24);
+            this.tabCircleSpiral.Controls.Add(this.txtRadiusRight);
+            this.tabCircleSpiral.Controls.Add(this.lblRadLeft);
             this.tabCircleSpiral.Controls.Add(this.cboCirclePlane);
             this.tabCircleSpiral.Controls.Add(this.chkPointTops);
             this.tabCircleSpiral.Controls.Add(this.label7);
@@ -401,8 +401,8 @@
             this.tabCircleSpiral.Controls.Add(this.chk90Offset);
             this.tabCircleSpiral.Controls.Add(this.chkRotate);
             this.tabCircleSpiral.Controls.Add(this.btnCircle);
-            this.tabCircleSpiral.Controls.Add(this.txtRadiusX);
-            this.tabCircleSpiral.Controls.Add(this.label5);
+            this.tabCircleSpiral.Controls.Add(this.txtRadiusLeft);
+            this.tabCircleSpiral.Controls.Add(this.lblRadRight);
             this.tabCircleSpiral.Controls.Add(this.chkReverse);
             this.tabCircleSpiral.Controls.Add(this.lbl_Fill);
             this.tabCircleSpiral.Controls.Add(this.lbl_off);
@@ -420,6 +420,38 @@
             this.tabCircleSpiral.Text = "Circle / Spiral";
             this.tabCircleSpiral.UseVisualStyleBackColor = true;
             // 
+            // chkRadiusSync
+            // 
+            this.chkRadiusSync.AutoSize = true;
+            this.chkRadiusSync.Checked = true;
+            this.chkRadiusSync.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkRadiusSync.Location = new System.Drawing.Point(132, 66);
+            this.chkRadiusSync.Name = "chkRadiusSync";
+            this.chkRadiusSync.Size = new System.Drawing.Size(50, 17);
+            this.chkRadiusSync.TabIndex = 29;
+            this.chkRadiusSync.Text = "Sync";
+            this.chkRadiusSync.UseVisualStyleBackColor = true;
+            this.chkRadiusSync.CheckedChanged += new System.EventHandler(this.chkRadiusSync_CheckedChanged);
+            // 
+            // txtRadiusRight
+            // 
+            this.txtRadiusRight.Enabled = false;
+            this.txtRadiusRight.Location = new System.Drawing.Point(71, 63);
+            this.txtRadiusRight.Name = "txtRadiusRight";
+            this.txtRadiusRight.Size = new System.Drawing.Size(55, 20);
+            this.txtRadiusRight.TabIndex = 28;
+            this.txtRadiusRight.Text = "5";
+            this.txtRadiusRight.Leave += new System.EventHandler(this.NumberText_Leave);
+            // 
+            // lblRadLeft
+            // 
+            this.lblRadLeft.AutoSize = true;
+            this.lblRadLeft.Location = new System.Drawing.Point(14, 48);
+            this.lblRadLeft.Name = "lblRadLeft";
+            this.lblRadLeft.Size = new System.Drawing.Size(48, 13);
+            this.lblRadLeft.TabIndex = 27;
+            this.lblRadLeft.Text = "x Radius";
+            // 
             // cboCirclePlane
             // 
             this.cboCirclePlane.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -428,15 +460,16 @@
             "Z (Draw on Ground)",
             "X (Draw on E/W Wall)",
             "Y (Draw on N/S Wall)"});
-            this.cboCirclePlane.Location = new System.Drawing.Point(6, 169);
+            this.cboCirclePlane.Location = new System.Drawing.Point(7, 163);
             this.cboCirclePlane.Name = "cboCirclePlane";
             this.cboCirclePlane.Size = new System.Drawing.Size(204, 21);
             this.cboCirclePlane.TabIndex = 26;
+            this.cboCirclePlane.SelectedIndexChanged += new System.EventHandler(this.cboCirclePlane_SelectedIndexChanged);
             // 
             // chkPointTops
             // 
             this.chkPointTops.AutoSize = true;
-            this.chkPointTops.Location = new System.Drawing.Point(87, 192);
+            this.chkPointTops.Location = new System.Drawing.Point(88, 186);
             this.chkPointTops.Name = "chkPointTops";
             this.chkPointTops.Size = new System.Drawing.Size(123, 17);
             this.chkPointTops.TabIndex = 25;
@@ -446,7 +479,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(60, 254);
+            this.label7.Location = new System.Drawing.Point(61, 248);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(63, 13);
             this.label7.TabIndex = 24;
@@ -454,7 +487,7 @@
             // 
             // txtRevolutions
             // 
-            this.txtRevolutions.Location = new System.Drawing.Point(132, 251);
+            this.txtRevolutions.Location = new System.Drawing.Point(133, 245);
             this.txtRevolutions.Name = "txtRevolutions";
             this.txtRevolutions.Size = new System.Drawing.Size(55, 20);
             this.txtRevolutions.TabIndex = 23;
@@ -464,15 +497,15 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(38, 54);
+            this.label6.Location = new System.Drawing.Point(38, 92);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(85, 13);
             this.label6.TabIndex = 22;
-            this.label6.Text = "Ending Z (Sprial)";
+            this.label6.Text = "Ending Z (Spiral)";
             // 
             // txtEndZ
             // 
-            this.txtEndZ.Location = new System.Drawing.Point(132, 51);
+            this.txtEndZ.Location = new System.Drawing.Point(132, 89);
             this.txtEndZ.Name = "txtEndZ";
             this.txtEndZ.Size = new System.Drawing.Size(55, 20);
             this.txtEndZ.TabIndex = 21;
@@ -482,7 +515,7 @@
             // rdo_From_Ground
             // 
             this.rdo_From_Ground.AutoSize = true;
-            this.rdo_From_Ground.Location = new System.Drawing.Point(69, 233);
+            this.rdo_From_Ground.Location = new System.Drawing.Point(70, 227);
             this.rdo_From_Ground.Name = "rdo_From_Ground";
             this.rdo_From_Ground.Size = new System.Drawing.Size(104, 17);
             this.rdo_From_Ground.TabIndex = 19;
@@ -493,7 +526,7 @@
             // 
             this.rdo_From_Center.AutoSize = true;
             this.rdo_From_Center.Checked = true;
-            this.rdo_From_Center.Location = new System.Drawing.Point(69, 218);
+            this.rdo_From_Center.Location = new System.Drawing.Point(70, 212);
             this.rdo_From_Center.Name = "rdo_From_Center";
             this.rdo_From_Center.Size = new System.Drawing.Size(82, 17);
             this.rdo_From_Center.TabIndex = 18;
@@ -504,7 +537,7 @@
             // chkSpiral
             // 
             this.chkSpiral.AutoSize = true;
-            this.chkSpiral.Location = new System.Drawing.Point(10, 218);
+            this.chkSpiral.Location = new System.Drawing.Point(11, 212);
             this.chkSpiral.Name = "chkSpiral";
             this.chkSpiral.Size = new System.Drawing.Size(52, 17);
             this.chkSpiral.TabIndex = 17;
@@ -514,7 +547,7 @@
             // chk90Offset
             // 
             this.chk90Offset.AutoSize = true;
-            this.chk90Offset.Location = new System.Drawing.Point(31, 129);
+            this.chk90Offset.Location = new System.Drawing.Point(32, 123);
             this.chk90Offset.Name = "chk90Offset";
             this.chk90Offset.Size = new System.Drawing.Size(112, 17);
             this.chk90Offset.TabIndex = 15;
@@ -526,7 +559,7 @@
             this.chkRotate.AutoSize = true;
             this.chkRotate.Checked = true;
             this.chkRotate.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkRotate.Location = new System.Drawing.Point(9, 115);
+            this.chkRotate.Location = new System.Drawing.Point(10, 109);
             this.chkRotate.Name = "chkRotate";
             this.chkRotate.Size = new System.Drawing.Size(124, 17);
             this.chkRotate.TabIndex = 14;
@@ -543,30 +576,30 @@
             this.btnCircle.UseVisualStyleBackColor = true;
             this.btnCircle.Click += new System.EventHandler(this.mnuEffectCircle_Click);
             // 
-            // txtRadiusX
+            // txtRadiusLeft
             // 
-            this.txtRadiusX.Location = new System.Drawing.Point(10, 89);
-            this.txtRadiusX.Name = "txtRadiusX";
-            this.txtRadiusX.Size = new System.Drawing.Size(55, 20);
-            this.txtRadiusX.TabIndex = 12;
-            this.txtRadiusX.Text = "5";
-            this.txtRadiusX.Leave += new System.EventHandler(this.NumberText_Leave);
+            this.txtRadiusLeft.Location = new System.Drawing.Point(8, 63);
+            this.txtRadiusLeft.Name = "txtRadiusLeft";
+            this.txtRadiusLeft.Size = new System.Drawing.Size(55, 20);
+            this.txtRadiusLeft.TabIndex = 12;
+            this.txtRadiusLeft.Text = "5";
+            this.txtRadiusLeft.Leave += new System.EventHandler(this.NumberText_Leave);
             // 
-            // label5
+            // lblRadRight
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(15, 73);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(48, 13);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "x Radius";
+            this.lblRadRight.AutoSize = true;
+            this.lblRadRight.Location = new System.Drawing.Point(73, 48);
+            this.lblRadRight.Name = "lblRadRight";
+            this.lblRadRight.Size = new System.Drawing.Size(48, 13);
+            this.lblRadRight.TabIndex = 11;
+            this.lblRadRight.Text = "y Radius";
             // 
             // chkReverse
             // 
             this.chkReverse.AutoSize = true;
             this.chkReverse.Checked = true;
             this.chkReverse.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkReverse.Location = new System.Drawing.Point(9, 148);
+            this.chkReverse.Location = new System.Drawing.Point(10, 142);
             this.chkReverse.Name = "chkReverse";
             this.chkReverse.Size = new System.Drawing.Size(114, 17);
             this.chkReverse.TabIndex = 8;
@@ -576,7 +609,7 @@
             // lbl_Fill
             // 
             this.lbl_Fill.AutoSize = true;
-            this.lbl_Fill.Location = new System.Drawing.Point(73, 276);
+            this.lbl_Fill.Location = new System.Drawing.Point(74, 270);
             this.lbl_Fill.Name = "lbl_Fill";
             this.lbl_Fill.Size = new System.Drawing.Size(60, 13);
             this.lbl_Fill.TabIndex = 7;
@@ -585,7 +618,7 @@
             // lbl_off
             // 
             this.lbl_off.AutoSize = true;
-            this.lbl_off.Location = new System.Drawing.Point(7, 263);
+            this.lbl_off.Location = new System.Drawing.Point(8, 257);
             this.lbl_off.Name = "lbl_off";
             this.lbl_off.Size = new System.Drawing.Size(66, 26);
             this.lbl_off.TabIndex = 6;
@@ -1535,38 +1568,6 @@
             // 
             this.ttThickness.IsBalloon = true;
             // 
-            // txtRadiusY
-            // 
-            this.txtRadiusY.Enabled = false;
-            this.txtRadiusY.Location = new System.Drawing.Point(71, 89);
-            this.txtRadiusY.Name = "txtRadiusY";
-            this.txtRadiusY.Size = new System.Drawing.Size(55, 20);
-            this.txtRadiusY.TabIndex = 28;
-            this.txtRadiusY.Text = "5";
-            this.txtRadiusY.Leave += new System.EventHandler(this.NumberText_Leave);
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(75, 73);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(48, 13);
-            this.label24.TabIndex = 27;
-            this.label24.Text = "y Radius";
-            // 
-            // chkRadiusSync
-            // 
-            this.chkRadiusSync.AutoSize = true;
-            this.chkRadiusSync.Checked = true;
-            this.chkRadiusSync.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkRadiusSync.Location = new System.Drawing.Point(132, 91);
-            this.chkRadiusSync.Name = "chkRadiusSync";
-            this.chkRadiusSync.Size = new System.Drawing.Size(50, 17);
-            this.chkRadiusSync.TabIndex = 29;
-            this.chkRadiusSync.Text = "Sync";
-            this.chkRadiusSync.UseVisualStyleBackColor = true;
-            this.chkRadiusSync.CheckedChanged += new System.EventHandler(this.chkRadiusSync_CheckedChanged);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1635,8 +1636,8 @@
         private System.Windows.Forms.TabPage tabTile;
         private System.Windows.Forms.Label lbl_off;
         private System.Windows.Forms.Label lbl_Fill;
-        private System.Windows.Forms.TextBox txtRadiusX;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtRadiusLeft;
+        private System.Windows.Forms.Label lblRadRight;
         private System.Windows.Forms.CheckBox chkReverse;
         private System.Windows.Forms.Button btnCircle;
         private System.Windows.Forms.CheckBox chkRotate;
@@ -1747,8 +1748,8 @@
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem visualizeLayoutToolStripMenuItem;
         private System.Windows.Forms.CheckBox chkRadiusSync;
-        private System.Windows.Forms.TextBox txtRadiusY;
-        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.TextBox txtRadiusRight;
+        private System.Windows.Forms.Label lblRadLeft;
     }
 }
 
