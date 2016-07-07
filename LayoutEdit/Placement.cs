@@ -23,8 +23,9 @@ namespace LayoutEdit
             internal string ItemName;
             internal string Memo;
         }
-        
-        internal struct Vector3D{
+
+        internal struct Vector3D
+        {
             internal double X, Y, Z;
             internal Vector3D(double X, double Y, double Z)
             {
@@ -33,7 +34,18 @@ namespace LayoutEdit
                 this.Z = Z;
             }
         }
-        
+        internal struct RotationPoints
+        {
+            internal double Rotation;
+            internal int Index;
+            internal double Delta;
+            internal RotationPoints(double Rotation, int Index, double Delta)
+            {
+                this.Index = Index;
+                this.Rotation = Rotation;
+                this.Delta = Delta;
+            }
+        }
         internal enum DirectionType
         {
             Forward = 1,
@@ -64,7 +76,7 @@ namespace LayoutEdit
         /// <param name="Revolutions">How many times to go around the circle</param>
         /// <param name="EndZ">Ending point for vertical spiral</param>
         /// <param name="TopPoint">Point the top of items at the center of the circle (Vertical Circle)</param>
-        internal static HouseItem[] CirclePlane(HouseItem[] Items, 
+        internal static HouseItem[] CirclePlane(HouseItem[] Items,
             Vector3D CenterPoint
             , int Orientation
             , double RadiusY
@@ -82,12 +94,15 @@ namespace LayoutEdit
             , bool TopPoint = false
             )
         {
+            if (RadiusX != RadiusY) return Ellipse(Items, CenterPoint, Orientation, RadiusY, RadiusX, Facing, Direction, Percentage, Rotate, StartDegree, Offset90, TopPoint);
             double Arc;
             double uRadius;
             if (!Spiral)
             {
                 Arc = 2d * Math.PI / ((double)Items.Count());
-            } else {
+            }
+            else
+            {
                 Arc = 2d * Math.PI / ((double)Items.Count() / Revolutions);
             }
             double X = 0, Y = 0, SD, zStep;
@@ -148,6 +163,76 @@ namespace LayoutEdit
                         if (Rotate) Items[Math.Abs(i)].Roll = (decimal)Rotation - o90;
                     }
                 }
+            }
+            return Items;
+        }
+        private static HouseItem[] Ellipse(HouseItem[] Items, Vector3D CenterPoint, int Orientation, double radiusY, double radiusX, int Facing
+            , DirectionType Direction = DirectionType.Reverse, double Percentage = 1, bool Rotate = true, double StartDegree = 0, bool Offset90 = false, bool TopPoint = false)
+        {
+            double theta = 0.0;
+            double twoPi = Math.PI * 2.0;
+            double deltaTheta = 0.0001;
+            double numIntegrals = twoPi / deltaTheta;
+            double circ = 0.0;
+            double dpt = 0.0;
+            /* integrate over the elipse to get the circumference */
+            for (int i = 0; i < numIntegrals; i++)
+            {
+                theta += i * deltaTheta;
+                dpt = computeDpt(radiusX, radiusY, theta);
+                circ += dpt;
+            }
+            int n = Items.Count();
+            int nextPoint = 0;
+            double run = 0.0;
+            theta = 0.0;
+
+            for (int i = 0; i < numIntegrals; i++)
+            {
+                theta += deltaTheta;
+                double subIntegral = n * run / circ;
+                if ((int)subIntegral >= nextPoint)
+                {
+                    if (nextPoint == Items.Count()) break;
+                    double Y = radiusX * Math.Cos(theta);
+                    double X = radiusY * Math.Sin(theta);
+                    double Rotation;
+                    Items[nextPoint].x = (decimal)CenterPoint.X;
+                    Items[nextPoint].y = (decimal)CenterPoint.Y;
+                    Items[nextPoint].z = (decimal)CenterPoint.Z;
+                    int o90 = (Offset90) ? 90 : 0;
+                    if (Orientation == 0)
+                    {
+                        Items[nextPoint].y = (decimal)(CenterPoint.Y + Y);
+                        Items[nextPoint].x = (decimal)(CenterPoint.X + X);
+                        Rotation = -1 * Math.Atan2((double)Items[nextPoint].y - CenterPoint.Y, (double)Items[nextPoint].x - CenterPoint.X) * (180 / Math.PI);
+                        if (Rotate) Items[nextPoint].Rotation = (decimal)Rotation - o90;
+                    }
+                    else
+                    {
+                        Items[nextPoint].z = (decimal)(CenterPoint.Z + Y);
+                        if (Facing == 0)
+                        {
+                            Items[nextPoint].x = (decimal)(CenterPoint.X + X);
+                            Rotation = Math.Atan2((double)Items[nextPoint].z - CenterPoint.Z, (double)Items[nextPoint].x - CenterPoint.X) * (180 / Math.PI);
+                        }
+                        else
+                        {
+                            Items[nextPoint].y = (decimal)(CenterPoint.Y + X);
+                            Rotation = Math.Atan2((double)Items[nextPoint].z - CenterPoint.Z, (double)Items[nextPoint].y - CenterPoint.Y) * (180 / Math.PI);
+                        }
+                        if (TopPoint)
+                        {
+                            if (Rotate) Items[nextPoint].Pitch = (decimal)Rotation * -1 - o90;
+                        }
+                        else
+                        {
+                            if (Rotate) Items[nextPoint].Roll = (decimal)Rotation - o90;
+                        }
+                    }
+                    nextPoint++;
+                }
+                run += computeDpt(radiusX, radiusY, theta);
             }
             return Items;
         }
@@ -300,6 +385,12 @@ namespace LayoutEdit
                 }
             }
             return Items;
+        }
+        private static double computeDpt(double radiusX, double radiusY, double theta)
+        {
+            double dpt_cos = Math.Pow(radiusY * Math.Cos(theta), 2);
+            double dpt_sin = Math.Pow(radiusX * Math.Sin(theta), 2);
+            return Math.Sqrt(dpt_sin + dpt_cos);
         }
     }
 }

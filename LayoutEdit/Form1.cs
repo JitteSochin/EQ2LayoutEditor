@@ -144,6 +144,11 @@ namespace LayoutEdit
 
         private void mnuEffectCircle_Click(object sender, EventArgs e)
         {
+            if (decimal.Parse(txtRadiusLeft.Text) == 0 || decimal.Parse(txtRadiusRight.Text) == 0)
+            {
+                MessageBox.Show("Radius must be greater than 0");
+                return;
+            }
             Placement.HouseItem[] Items = SelectedGridToItems();
             Placement.Vector3D CenterPoint = new Placement.Vector3D(
                 double.Parse(txtCirCentX.Text)
