@@ -44,8 +44,8 @@ namespace LayoutEdit
         {
             HouseItems.Columns.Add(new DataColumn("ItemName", typeof(string)));
             HouseItems.Columns.Add(new DataColumn("x", typeof(decimal)));
-            HouseItems.Columns.Add(new DataColumn("y", typeof(decimal)));
             HouseItems.Columns.Add(new DataColumn("z", typeof(decimal)));
+            HouseItems.Columns.Add(new DataColumn("y", typeof(decimal)));
             HouseItems.Columns.Add(new DataColumn("Rotation", typeof(decimal)));
             HouseItems.Columns.Add(new DataColumn("Pitch", typeof(decimal)));
             HouseItems.Columns.Add(new DataColumn("Roll", typeof(decimal)));

@@ -52,8 +52,8 @@ namespace LayoutEdit
             cboCirclePlane.SelectedIndex = 0;
             dg.DataSource = layout.HouseItems;                      
             dg.Columns["x"].HeaderText = "+ West / - East (X)";
-            dg.Columns["y"].HeaderText = "+ South / - North (Y)";
             dg.Columns["z"].HeaderText = "+ Up / - Down (Z)";
+            dg.Columns["y"].HeaderText = "+ South / - North (Y)";
             dg.Columns["Rotation"].HeaderText = "Z Rotation";
             dg.Columns["Pitch"].HeaderText = "X Rotation";
             dg.Columns["Roll"].HeaderText = "Y Rotation";
