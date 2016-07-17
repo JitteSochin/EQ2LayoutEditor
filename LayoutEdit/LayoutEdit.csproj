@@ -83,6 +83,12 @@
     <Compile Include="frmChart.Designer.cs">
       <DependentUpon>frmChart.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmDiff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDiff.Designer.cs">
+      <DependentUpon>frmDiff.cs</DependentUpon>
+    </Compile>
     <Compile Include="Group.cs" />
     <Compile Include="LayoutFile.cs" />
     <Compile Include="Placement.cs" />
@@ -98,6 +104,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmChart.resx">
       <DependentUpon>frmChart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDiff.resx">
+      <DependentUpon>frmDiff.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

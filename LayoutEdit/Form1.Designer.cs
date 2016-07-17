@@ -166,6 +166,7 @@
             this.mnuShopHTML = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuShopBoth = new System.Windows.Forms.ToolStripMenuItem();
             this.ttThickness = new System.Windows.Forms.ToolTip(this.components);
+            this.differentialOpenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dg)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -196,6 +197,7 @@
             // 
             this.mnuFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuOpen,
+            this.differentialOpenToolStripMenuItem,
             this.mnuSave,
             this.mnuSaveAs,
             this.saveChangesOnlyAsToolStripMenuItem,
@@ -1569,6 +1571,13 @@
             // 
             this.ttThickness.IsBalloon = true;
             // 
+            // differentialOpenToolStripMenuItem
+            // 
+            this.differentialOpenToolStripMenuItem.Name = "differentialOpenToolStripMenuItem";
+            this.differentialOpenToolStripMenuItem.Size = new System.Drawing.Size(272, 22);
+            this.differentialOpenToolStripMenuItem.Text = "&Differential Comparison";
+            this.differentialOpenToolStripMenuItem.Click += new System.EventHandler(this.differentialOpenToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1751,6 +1760,7 @@
         private System.Windows.Forms.CheckBox chkRadiusSync;
         private System.Windows.Forms.TextBox txtRadiusRight;
         private System.Windows.Forms.Label lblRadLeft;
+        private System.Windows.Forms.ToolStripMenuItem differentialOpenToolStripMenuItem;
     }
 }
 

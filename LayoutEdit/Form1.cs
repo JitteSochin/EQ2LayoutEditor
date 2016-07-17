@@ -889,5 +889,13 @@ namespace LayoutEdit
                     break;
             }
         }
+
+        private void differentialOpenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmDiff diff = new frmDiff();
+            if (layout.FileLoaded) diff.SourceFile = layout.FileName;
+            DialogResult dr = diff.ShowDialog(this);
+            if (dr == DialogResult.Cancel) return;
+        }
     }
 }
