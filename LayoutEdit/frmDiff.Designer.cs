@@ -53,18 +53,18 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(13, 13);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(60, 13);
+            this.label1.Size = new System.Drawing.Size(61, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Source File";
+            this.label1.Text = "Original File";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(13, 75);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(81, 13);
+            this.label2.Size = new System.Drawing.Size(48, 13);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Comparison File";
+            this.label2.Text = "New File";
             // 
             // txtSource
             // 
@@ -117,9 +117,9 @@
             this.chkKeepSrcNew.AutoSize = true;
             this.chkKeepSrcNew.Location = new System.Drawing.Point(16, 164);
             this.chkKeepSrcNew.Name = "chkKeepSrcNew";
-            this.chkKeepSrcNew.Size = new System.Drawing.Size(256, 17);
+            this.chkKeepSrcNew.Size = new System.Drawing.Size(257, 17);
             this.chkKeepSrcNew.TabIndex = 8;
-            this.chkKeepSrcNew.Text = "Keep items that are in source but not comparison";
+            this.chkKeepSrcNew.Text = "Keep items that are in original but not the new file";
             this.chkKeepSrcNew.UseVisualStyleBackColor = true;
             // 
             // chkKeepCompareNew
@@ -129,9 +129,9 @@
             this.chkKeepCompareNew.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkKeepCompareNew.Location = new System.Drawing.Point(16, 188);
             this.chkKeepCompareNew.Name = "chkKeepCompareNew";
-            this.chkKeepCompareNew.Size = new System.Drawing.Size(267, 17);
+            this.chkKeepCompareNew.Size = new System.Drawing.Size(286, 17);
             this.chkKeepCompareNew.TabIndex = 9;
-            this.chkKeepCompareNew.Text = "Keep items that are in comparison but not in source";
+            this.chkKeepCompareNew.Text = "Keep items that are in the new file but not in the original";
             this.chkKeepCompareNew.UseVisualStyleBackColor = true;
             // 
             // lblSourceInfo
@@ -139,18 +139,18 @@
             this.lblSourceInfo.AutoSize = true;
             this.lblSourceInfo.Location = new System.Drawing.Point(16, 54);
             this.lblSourceInfo.Name = "lblSourceInfo";
-            this.lblSourceInfo.Size = new System.Drawing.Size(122, 13);
+            this.lblSourceInfo.Size = new System.Drawing.Size(123, 13);
             this.lblSourceInfo.TabIndex = 10;
-            this.lblSourceInfo.Text = "Source File: Not Loaded";
+            this.lblSourceInfo.Text = "Original File: Not Loaded";
             // 
             // lblCompareInfo
             // 
             this.lblCompareInfo.AutoSize = true;
-            this.lblCompareInfo.Location = new System.Drawing.Point(8, 114);
+            this.lblCompareInfo.Location = new System.Drawing.Point(29, 114);
             this.lblCompareInfo.Name = "lblCompareInfo";
-            this.lblCompareInfo.Size = new System.Drawing.Size(130, 13);
+            this.lblCompareInfo.Size = new System.Drawing.Size(110, 13);
             this.lblCompareInfo.TabIndex = 11;
-            this.lblCompareInfo.Text = "Compare File: Not Loaded";
+            this.lblCompareInfo.Text = "New File: Not Loaded";
             // 
             // btnCompare
             // 
@@ -177,10 +177,11 @@
             this.chkKeepSrc.AutoSize = true;
             this.chkKeepSrc.Location = new System.Drawing.Point(16, 223);
             this.chkKeepSrc.Name = "chkKeepSrc";
-            this.chkKeepSrc.Size = new System.Drawing.Size(416, 43);
+            this.chkKeepSrc.Size = new System.Drawing.Size(393, 43);
             this.chkKeepSrc.TabIndex = 14;
-            this.chkKeepSrc.Text = "Keep all items from source\r\n    - If the item is in both files, values from \"comp" +
-    "are\" file are used unless any of the \r\n       keep compare values are unchecked";
+            this.chkKeepSrc.Text = "Keep all items from the original file\r\n    - If the item is in both files, values" +
+    " from \"New\" file are used unless all  of the \r\n       keep new values are unchec" +
+    "ked";
             this.chkKeepSrc.UseVisualStyleBackColor = true;
             // 
             // chkKeepCompare
@@ -190,9 +191,9 @@
             this.chkKeepCompare.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkKeepCompare.Location = new System.Drawing.Point(16, 272);
             this.chkKeepCompare.Name = "chkKeepCompare";
-            this.chkKeepCompare.Size = new System.Drawing.Size(158, 17);
+            this.chkKeepCompare.Size = new System.Drawing.Size(171, 17);
             this.chkKeepCompare.TabIndex = 15;
-            this.chkKeepCompare.Text = "Keep all items from compare";
+            this.chkKeepCompare.Text = "Keep all items from the new file";
             this.chkKeepCompare.UseVisualStyleBackColor = true;
             // 
             // lblFinalCount

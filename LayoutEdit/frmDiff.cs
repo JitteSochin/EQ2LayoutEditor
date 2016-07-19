@@ -42,7 +42,7 @@ namespace LayoutEdit
             if (dr == DialogResult.Cancel) return;
             source.FileName = OD.FileName;
             txtSource.Text = OD.FileName;
-            lblSourceInfo.Text = String.Format("Source File: House Type: {0}, House ID {1}, Items: {2}", source.HouseType, source.HouseID, source.HouseItems.Rows.Count.ToString("#,###"));
+            lblSourceInfo.Text = String.Format("Original File: House Type: {0}, House ID {1}, Items: {2}", source.HouseType, source.HouseID, source.HouseItems.Rows.Count.ToString("#,###"));
             if (compare.FileLoaded) Compare();
         }
 
@@ -53,7 +53,7 @@ namespace LayoutEdit
             if (dr == DialogResult.Cancel) return;
             compare.FileName = OD.FileName;
             txtCompare.Text = OD.FileName;
-            lblCompareInfo.Text = String.Format("Compare File: House Type: {0}, House ID {1}, Items: {2}", compare.HouseType, compare.HouseID, compare.HouseItems.Rows.Count.ToString("#,###"));
+            lblCompareInfo.Text = String.Format("New File: House Type: {0}, House ID {1}, Items: {2}", compare.HouseType, compare.HouseID, compare.HouseItems.Rows.Count.ToString("#,###"));
             if (source.FileLoaded) Compare();
         }
         private bool Compare()
@@ -65,10 +65,15 @@ namespace LayoutEdit
                 dr = MessageBox.Show("House types do not match. Continue with compare?", "House Mismatch", MessageBoxButtons.YesNo);
                 if (dr == DialogResult.No) return false;
             }
+            if (source.FileName == compare.FileName)
+            {
+                MessageBox.Show("Original and New files are the same file");
+                return false;
+            }
             Group NotInSource = new Group();
-            NotInSource.Name = "Not In Source (" + CompareStamp + ")";
+            NotInSource.Name = "Not In Original (" + CompareStamp + ")";
             Group NotInCompare = new Group();
-            NotInCompare.Name = "Not In Compare (" + CompareStamp + ")";
+            NotInCompare.Name = "Not In New (" + CompareStamp + ")";
             Group Changed = new Group();
             Changed.Name = "Changed (" + CompareStamp + ")";
 
@@ -149,8 +154,8 @@ namespace LayoutEdit
             if ((chkKeepCompareNew.Checked || chkKeepCompare.Checked) && NotInSource.GetItems().Count > 0) destination.Groups.Add(NotInSource);
             if ((chkKeepSrcNew.Checked || chkKeepSrc.Checked) && Changed.GetItems().Count > 0) destination.Groups.Add(NotInCompare);
             chkDiff.Text = String.Format("Keep items that changed [{0}]", Changed.GetItems().Count.ToString("#,##0"));
-            chkKeepCompareNew.Text = String.Format("Keep items that are in comparison but not in source [{0}]", NotInSource.GetItems().Count.ToString("#,##0"));
-            chkKeepSrcNew.Text = String.Format("Keep items that are in source but not comparison [{0}]", NotInCompare.GetItems().Count.ToString("#,##0"));
+            chkKeepCompareNew.Text = String.Format("Keep items that are in the new file but not in the original [{0}]", NotInSource.GetItems().Count.ToString("#,##0"));
+            chkKeepSrcNew.Text = String.Format("Keep items that are in the original but not the new file [{0}]", NotInCompare.GetItems().Count.ToString("#,##0"));
             lblFinalCount.Text = String.Format("Final item count: {0}", destination.HouseItems.Rows.Count.ToString("#,##0"));
             return true;
         }
