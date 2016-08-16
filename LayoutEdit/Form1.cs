@@ -303,8 +303,25 @@ namespace LayoutEdit
         {
             foreach (DataGridViewRow row in dg.SelectedRows)
             {
+                if (chkCloneCrate.Checked) 
+                {
+                    DataRow DRCrate = layout.FindCrateItem(Int64.Parse(row.Cells["ItemID"].Value.ToString()));
+                    if (DRCrate == null) goto NotInCrate;
+                    if (bool.Parse(row.Cells["InCrate"].Value.ToString()) == true) goto NotInCrate;
+                    DRCrate["InCrate"] = bool.Parse(row.Cells["InCrate"].Value.ToString());
+                    DRCrate["ItemID"] = Int64.Parse(row.Cells["ItemID"].Value.ToString());
+                    DRCrate["ItemName"] = row.Cells["ItemName"].Value.ToString();
+                    DRCrate["Pitch"] = decimal.Parse(row.Cells["Pitch"].Value.ToString());
+                    DRCrate["Roll"] = decimal.Parse(row.Cells["Roll"].Value.ToString());
+                    DRCrate["Rotation"] = decimal.Parse(row.Cells["Rotation"].Value.ToString());
+                    DRCrate["Scale"] = decimal.Parse(row.Cells["Scale"].Value.ToString());
+                    DRCrate["x"] = decimal.Parse(row.Cells["x"].Value.ToString());
+                    DRCrate["y"] = decimal.Parse(row.Cells["y"].Value.ToString());
+                    DRCrate["z"] = decimal.Parse(row.Cells["z"].Value.ToString());
+                    goto FoundInCrate;
+                }
+            NotInCrate:
                 DataRow DR = layout.HouseItems.NewRow();
-                
                 DR["InCrate"] = bool.Parse(row.Cells["InCrate"].Value.ToString());
                 DR["ItemID"] = Int64.Parse(row.Cells["ItemID"].Value.ToString());
                 DR["ItemName"] = row.Cells["ItemName"].Value.ToString();
@@ -326,6 +343,8 @@ namespace LayoutEdit
                 {
                     goto clonePreAdd;
                 }
+            FoundInCrate:
+                continue;
             }
         }
 

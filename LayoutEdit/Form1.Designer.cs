@@ -34,6 +34,7 @@
             this.mnu = new System.Windows.Forms.MenuStrip();
             this.mnuFile = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuOpen = new System.Windows.Forms.ToolStripMenuItem();
+            this.differentialOpenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuSave = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuSaveAs = new System.Windows.Forms.ToolStripMenuItem();
             this.saveChangesOnlyAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -166,7 +167,7 @@
             this.mnuShopHTML = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuShopBoth = new System.Windows.Forms.ToolStripMenuItem();
             this.ttThickness = new System.Windows.Forms.ToolTip(this.components);
-            this.differentialOpenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.chkCloneCrate = new System.Windows.Forms.CheckBox();
             this.mnu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dg)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -216,6 +217,13 @@
             this.mnuOpen.Size = new System.Drawing.Size(272, 22);
             this.mnuOpen.Text = "&Open Layout File";
             this.mnuOpen.Click += new System.EventHandler(this.btnLoad_Click);
+            // 
+            // differentialOpenToolStripMenuItem
+            // 
+            this.differentialOpenToolStripMenuItem.Name = "differentialOpenToolStripMenuItem";
+            this.differentialOpenToolStripMenuItem.Size = new System.Drawing.Size(272, 22);
+            this.differentialOpenToolStripMenuItem.Text = "&Differential Comparison";
+            this.differentialOpenToolStripMenuItem.Click += new System.EventHandler(this.differentialOpenToolStripMenuItem_Click);
             // 
             // mnuSave
             // 
@@ -1497,6 +1505,7 @@
             // 
             // tabOther
             // 
+            this.tabOther.Controls.Add(this.chkCloneCrate);
             this.tabOther.Controls.Add(this.btnClone);
             this.tabOther.Controls.Add(this.btnManifest);
             this.tabOther.Controls.Add(this.btnDeleteCrate);
@@ -1571,12 +1580,17 @@
             // 
             this.ttThickness.IsBalloon = true;
             // 
-            // differentialOpenToolStripMenuItem
+            // chkCloneCrate
             // 
-            this.differentialOpenToolStripMenuItem.Name = "differentialOpenToolStripMenuItem";
-            this.differentialOpenToolStripMenuItem.Size = new System.Drawing.Size(272, 22);
-            this.differentialOpenToolStripMenuItem.Text = "&Differential Comparison";
-            this.differentialOpenToolStripMenuItem.Click += new System.EventHandler(this.differentialOpenToolStripMenuItem_Click);
+            this.chkCloneCrate.AutoSize = true;
+            this.chkCloneCrate.Checked = true;
+            this.chkCloneCrate.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkCloneCrate.Location = new System.Drawing.Point(47, 102);
+            this.chkCloneCrate.Name = "chkCloneCrate";
+            this.chkCloneCrate.Size = new System.Drawing.Size(171, 17);
+            this.chkCloneCrate.TabIndex = 3;
+            this.chkCloneCrate.Text = "Attempt to use items from crate";
+            this.chkCloneCrate.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -1616,6 +1630,7 @@
             this.tabMirror.ResumeLayout(false);
             this.tabMirror.PerformLayout();
             this.tabOther.ResumeLayout(false);
+            this.tabOther.PerformLayout();
             this.mnuShopping.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -1761,6 +1776,7 @@
         private System.Windows.Forms.TextBox txtRadiusRight;
         private System.Windows.Forms.Label lblRadLeft;
         private System.Windows.Forms.ToolStripMenuItem differentialOpenToolStripMenuItem;
+        private System.Windows.Forms.CheckBox chkCloneCrate;
     }
 }
 
