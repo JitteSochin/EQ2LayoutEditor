@@ -11,7 +11,7 @@ namespace LayoutEdit
     {
         private string _filename;       // Name of the file
         private int _fileversion;       // Version of the file
-        private Int64 _houseid;         // Unique House ID
+        private string _houseid;         // Unique House ID
         private Int64 _houseversion;    // Internal Identifier for House
         private string _housetype;      // House Type
         private bool _fileloaded;       // Do we have a file loaded?
@@ -37,7 +37,7 @@ namespace LayoutEdit
         }
         public bool FileLoaded { get { return _fileloaded; } }
         public int FileVersion { get { return (_fileloaded) ? _fileversion : 0; } }
-        public Int64 HouseID { get { return (_fileloaded) ? _houseid : 0; } }
+        public string HouseID { get { return (_fileloaded) ? _houseid : "0"; } }
         public string HouseType { get { return _housetype; } }
         public DateTime LastModified { get { return _lastModified; } set { _lastModified = value; } }
         public LayoutFile()
@@ -85,12 +85,7 @@ namespace LayoutEdit
                 _houseversion = Int64.Parse(_input.Split(',')[0]);
 
                 _input = sr.ReadLine();
-                try
-                {
-                    _houseid = Int64.Parse(_input.Split(',')[0]);
-                } catch (System.FormatException fe) {
-                    _houseid = Int64.Parse(_input.Split(',')[0], System.Globalization.NumberStyles.HexNumber);
-                }
+                _houseid = _input.Split(',')[0];
             }
             else
             {
@@ -184,7 +179,7 @@ namespace LayoutEdit
             StreamWriter sw = new StreamWriter(FileName);
             sw.WriteLine(_fileversion.ToString() + ",Version Number");
             sw.WriteLine(_houseversion.ToString() + "," + _housetype);
-            sw.WriteLine(_houseid.ToString() + ", Unique House ID. ");
+            sw.WriteLine(_houseid + ", Unique House ID. ");
             sw.WriteLine("//EQ2LayoutEditor"); 
             string line;
             foreach (DataRow dr in HouseItems.Rows)
