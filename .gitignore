@@ -1,0 +1,7 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/LayoutEdit/bin/Debug
+/LayoutEdit/obj/x86/Debug
+/.vs/LayoutEdit/v14

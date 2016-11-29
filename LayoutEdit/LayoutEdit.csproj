@@ -71,11 +71,11 @@
     <Compile Include="Dial.Designer.cs">
       <DependentUpon>Dial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="frmLayoutEdit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="frmLayoutEdit.Designer.cs">
+      <DependentUpon>frmLayoutEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="frmChart.cs">
       <SubType>Form</SubType>
@@ -89,8 +89,15 @@
     <Compile Include="frmDiff.Designer.cs">
       <DependentUpon>frmDiff.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmLibrary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLibrary.Designer.cs">
+      <DependentUpon>frmLibrary.cs</DependentUpon>
+    </Compile>
     <Compile Include="Group.cs" />
     <Compile Include="LayoutFile.cs" />
+    <Compile Include="ListViewItemComparer.cs" />
     <Compile Include="Placement.cs" />
     <Compile Include="Program.cs">
       <SubType>Component</SubType>
@@ -99,14 +106,17 @@
     <EmbeddedResource Include="Dial.resx">
       <DependentUpon>Dial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="frmLayoutEdit.resx">
+      <DependentUpon>frmLayoutEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmChart.resx">
       <DependentUpon>frmChart.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmDiff.resx">
       <DependentUpon>frmDiff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLibrary.resx">
+      <DependentUpon>frmLibrary.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
