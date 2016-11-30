@@ -15,13 +15,6 @@ namespace LayoutEdit
             internal string ItemName { get; set; }
             internal Int32 ItemCount { get; set; }
             internal Int32 CratedCount { get; set; }
-            internal LayoutSummary(Int64 itemid, string itemname, Int32 itemct, Int32 cratedct)
-            {
-                ItemID = itemid;
-                ItemName = itemname;
-                ItemCount = itemct;
-                CratedCount = cratedct;
-            }
         }
         List<LayoutSummary> Summary = new List<LayoutSummary>();
         List<LayoutFile> layoutfiles = new List<LayoutFile>();
